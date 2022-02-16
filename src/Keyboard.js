@@ -1,6 +1,24 @@
+const KeyboardKey = () => {
+  return (
+    <div className="keyboard-key">
+      <p>K</p>
+    </div>
+  );
+};
+
 const Keyboard = () => {
   return (
-    <p>Here's the keyboard</p>
+    <div className="keyboard">
+      <KeyboardKey />
+      <KeyboardKey />
+      <KeyboardKey />
+      <KeyboardKey />
+      <KeyboardKey />
+      <KeyboardKey />
+      <KeyboardKey />
+      <KeyboardKey />
+      <KeyboardKey />
+    </div>
   );
 };
 
