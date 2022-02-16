@@ -4,7 +4,7 @@ import Keyboard from './Keyboard';
 
 function WordGame() {
   return (
-    <div>
+    <div className="word-game-app">
       <header>
         <h1>Word Game</h1>
       </header>
