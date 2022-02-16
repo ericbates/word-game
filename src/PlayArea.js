@@ -1,6 +1,12 @@
+import Row from './Row';
+
 const PlayArea = () => {
   return (
-    <p>Here's the playarea</p>
+    <div className="play-area">
+      <Row />
+      <Row />
+      <Row />
+    </div>
   );
 };
 
