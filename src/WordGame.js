@@ -1,7 +1,6 @@
-import './WordGame.css';
-import Stats from './Stats.js';
-import PlayArea from './PlayArea.js';
-import Keyboard from './Keyboard.js';
+import Stats from './Stats';
+import PlayArea from './PlayArea';
+import Keyboard from './Keyboard';
 
 function WordGame() {
   return (
