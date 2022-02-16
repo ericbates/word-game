@@ -1,9 +1,15 @@
-import logo from './logo.svg';
 import './WordGame.css';
 
 function WordGame() {
   return (
-    <p>Hello World</p>
+    <div>
+      <header>
+        <h1>Word Game</h1>
+      </header>
+      <Stats />
+      <PlayArea />
+      <Keyboard />
+    </div>
   );
 }
 
