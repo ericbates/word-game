@@ -12,13 +12,7 @@ const Row = (props) => {
   const rowNum = props.rowNum;
 
   //create a Letter component for each letter in the word
-  const letters = [];
-  [...word].forEach((letter, index) => {
-    const uniqueKey = `${rowNum},${index}`;
-    letters.push(
-      <Letter value={letter} key={uniqueKey} />
-    );
-  });
+  const letters = [...word].map((letter, index) => <Letter value={letter} key={`${rowNum},${index}`} />);
 
   return (
     <div className="row">

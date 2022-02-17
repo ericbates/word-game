@@ -16,16 +16,7 @@ const Keyboard = () => {
   ];
 
   //create 3 rows of KeyboardKey components
-  const rows = [];
-  for(let i = 0; i < keys.length; i++){
-    const row = [];
-    keys[i].forEach(key => {
-      row.push(
-        <KeyboardKey value={key} key={key} />
-      );
-    });
-    rows.push(row);
-  }
+  const rows = keys.map(keyRow => keyRow.map(key => <KeyboardKey value={key} key={key} />));
 
   return (
     <div className="keyboard">

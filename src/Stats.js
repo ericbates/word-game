@@ -5,12 +5,7 @@ const Stats = (props) => {
   const numGuesses = props.numGuesses;
   const correctGuesses = props.correctGuesses;
 
-  const answers = [];
-  correctGuesses.forEach(guess => {
-    answers.push(
-      <p>{guess}</p>
-    );
-  });
+  const answers = correctGuesses.map((guess, index) => <p key={`correct-${index}`}>{guess}</p>);
 
   return (
     <div className="stats-bar">

@@ -6,12 +6,7 @@ const PlayArea = () => {
   //TEMPORARY DUMMY DATA
   const previousGuesses = ['was', 'one', 'two', 'four', 'tear'];
 
-  const rows = [];
-  previousGuesses.forEach((guess, index) => {
-    rows.push(
-      <Row word={guess} rowNum={index} key={guess} />
-    );
-  });
+  const rows = previousGuesses.map((guess, index) => <Row word={guess} rowNum={index} key={guess} />);
 
   return (
     <div className="play-area">
