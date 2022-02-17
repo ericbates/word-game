@@ -2,13 +2,22 @@ import Stats from './Stats';
 import PlayArea from './PlayArea';
 import Keyboard from './Keyboard';
 
-function WordGame() {
+const WordGame = () => {
+  //TEMPORARY DUMMY DATA 
+  const totalGuesses = 20;
+  let numGuesses = 10;
+  const correctGuesses = ['two', 'tear'];
+
   return (
     <div className="word-game-app">
       <header>
         <h1>Word Game</h1>
       </header>
-      <Stats />
+      <Stats
+        totalGuesses={totalGuesses}
+        numGuesses={numGuesses}
+        correctGuesses={correctGuesses}
+      />
       <PlayArea />
       <Keyboard />
     </div>
