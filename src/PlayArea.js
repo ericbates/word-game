@@ -7,9 +7,9 @@ const PlayArea = () => {
   const previousGuesses = ['was', 'one', 'two', 'four', 'tear'];
 
   const rows = [];
-  previousGuesses.forEach(guess => {
+  previousGuesses.forEach((guess, index) => {
     rows.push(
-      <Row word={guess} key={guess} />
+      <Row word={guess} rowNum={index} key={guess} />
     );
   });
 
