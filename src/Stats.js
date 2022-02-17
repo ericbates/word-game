@@ -5,15 +5,19 @@ const Stats = (props) => {
   const numGuesses = props.numGuesses;
   const correctGuesses = props.correctGuesses;
 
+  const numCorrect = correctGuesses.length;
+  const numCorrectString = numCorrect === 1 ? `${numCorrect} word` : `${numCorrect} words`;
   const answers = correctGuesses.map((guess, index) => <h2 key={`correct-${index}`}>{guess.toUpperCase()}</h2>);
+
 
   return (
     <div className="stats-bar">
       <div className="correct-guesses">
+        <h2 className="num-correct">{numCorrectString}</h2>
         {answers}
       </div>
       <div className="guess-stats">
-        <p>{numGuesses}/{totalGuesses}</p>
+        <h1><span className="num-guesses">{numGuesses}</span>/{totalGuesses} Guesses</h1>
       </div>
     </div>
   );
