@@ -5,7 +5,7 @@ const Stats = (props) => {
   const numGuesses = props.numGuesses;
   const correctGuesses = props.correctGuesses;
 
-  const answers = correctGuesses.map((guess, index) => <p key={`correct-${index}`}>{guess}</p>);
+  const answers = correctGuesses.map((guess, index) => <h2 key={`correct-${index}`}>{guess.toUpperCase()}</h2>);
 
   return (
     <div className="stats-bar">

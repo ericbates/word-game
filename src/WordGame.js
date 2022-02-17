@@ -6,7 +6,7 @@ const WordGame = () => {
   //TEMPORARY DUMMY DATA 
   const totalGuesses = 20;
   let numGuesses = 10;
-  const correctGuesses = ['two', 'tear'];
+  const correctGuesses = ['two', 'tear', 'index', 'apples', 'jukebox', 'blizzard', 'mezzanine'];
 
   return (
     <div className="word-game-app">
