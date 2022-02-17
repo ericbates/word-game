@@ -1,13 +1,12 @@
-import Answers from './Answers';
-import Guesses from './Guesses';
-
 //Stats header
 //Displays correct guesses and number of remaining guesses
-const Stats = () => {
+const Stats = (props) => {
+  const totalGuesses = props.totalGuesses;
+  const numGuesses = props.numGuesses;
+  const correctGuesses = props.correctGuesses;
+
   return (
     <div className="stats-bar">
-      <Answers />
-      <Guesses />
     </div>
   );
 };
