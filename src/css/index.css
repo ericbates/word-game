@@ -42,6 +42,8 @@ main {
   grid-template-columns: repeat(2, 1fr);
   padding: 10px 40px;
   gap: 0px 20px;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
 }
 
 .correct-guesses {
@@ -96,11 +98,14 @@ h2.num-correct {
 .progress-area {
   width: 20%;
   gap: 5px;
+  border-right: 1px solid black;
+  padding: 10px 0px;
 }
 
 .row.progress {
   justify-content: start;
   gap: 5px;
+  padding-left: 10px;
 }
 
 .progress-icon {
