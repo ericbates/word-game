@@ -75,3 +75,46 @@ h2.num-correct {
 .num-guesses {
   color: red;
 }
+
+.progress-play-area {
+  display: flex;
+}
+
+.progress {
+  width: 20%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 5px;
+}
+
+.progress-row {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 5px;
+}
+
+.progress-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.progress-icon.absent {
+  background-color: grey;
+}
+
+.progress-icon.misplaced {
+  background-color: yellow;
+}
+
+.progress-icon.correct {
+  background-color: green;
+}
+
+.play-area {
+  background-color: blue;
+  width: 80%;
+}
