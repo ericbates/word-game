@@ -41,9 +41,9 @@ const Progress = () => {
   const rows = currentProgress.map((status, index) => <ProgressRow status={status} rowNum={index} key={`progress-${index}`} />);
 
   return (
-    <div className="progress">
+    <section className="progress">
       {rows}
-    </div>
+    </section>
   );
 };
 

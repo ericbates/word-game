@@ -19,7 +19,7 @@ const Keyboard = () => {
   const rows = keys.map(keyRow => keyRow.map(key => <KeyboardKey value={key} key={key} />));
 
   return (
-    <div className="keyboard">
+    <section className="keyboard">
       <div className="keyboardRow">
         {rows[0]}
       </div>
@@ -29,7 +29,7 @@ const Keyboard = () => {
       <div className="keyboardRow">
         {rows[2]}
       </div>
-    </div>
+    </section>
   );
 };
 

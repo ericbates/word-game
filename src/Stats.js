@@ -11,7 +11,7 @@ const Stats = (props) => {
 
 
   return (
-    <div className="stats-bar">
+    <section className="stats-bar">
       <div className="correct-guesses">
         <h2 className="num-correct">{numCorrectString}</h2>
         {answers}
@@ -19,7 +19,7 @@ const Stats = (props) => {
       <div className="guess-stats">
         <h1><span className="num-guesses">{numGuesses}</span>/{totalGuesses} Guesses</h1>
       </div>
-    </div>
+    </section>
   );
 };
 

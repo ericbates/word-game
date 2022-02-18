@@ -32,9 +32,9 @@ const PlayArea = () => {
   const rows = previousGuesses.map((guess, index) => <PlayRow word={guess} rowNum={index} key={guess} />);
 
   return (
-    <div className="play-area">
+    <section className="play-area">
       {rows}
-    </div>
+    </section>
   );
 };
 
