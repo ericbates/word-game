@@ -86,7 +86,7 @@ h2.num-correct {
   align-content: start;
 }
 
-.row.progress, .row.word {  
+.row.progress, .row.word, .row.keyboard {  
   width: 100%;
   display: grid;
   grid-template-rows: 1fr;
@@ -134,6 +134,33 @@ h2.num-correct {
   border: 2px solid black;
   height: 80px;
   width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard-area {
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 10px;
+}
+
+.row.keyboard {
+  justify-content: center;
+  gap: 10px;
+}
+
+.keyboard-key {
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 60px;
+  min-width: 40px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;

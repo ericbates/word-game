@@ -16,7 +16,7 @@ const Keyboard = () => {
   });
 
   return (
-    <section className="keyboard">
+    <section className="keyboard-area">
       {rows}
     </section>
   );

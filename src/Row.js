@@ -21,10 +21,10 @@ const Letter = (props) => {
 
 //A key for the keyboard
 const KeyboardKey = (props) => {
-  const key = props.value;
+  const key = props.value.toUpperCase();
   return (
     <div className="keyboard-key">
-      <p>{key}</p>
+      <h1>{key}</h1>
     </div>
   );
 };
