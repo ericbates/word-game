@@ -80,19 +80,25 @@ h2.num-correct {
   display: flex;
 }
 
-.progress-area {
-  width: 20%;
+.progress-area, .play-area {
   display: grid;
   grid-template-columns: 1fr;
   align-content: start;
-  gap: 5px;
 }
 
-.row.progress {
+.row.progress, .row.word {  
   width: 100%;
   display: grid;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
+}
+
+.progress-area {
+  width: 20%;
+  gap: 5px;
+}
+
+.row.progress {
   justify-content: start;
   gap: 5px;
 }
@@ -115,6 +121,20 @@ h2.num-correct {
 }
 
 .play-area {
-  background-color: blue;
   width: 80%;
+  gap: 10px;
+}
+
+.row.word {
+  justify-content: center;
+  gap: 10px;
+}
+
+.letter {
+  border: 2px solid black;
+  height: 80px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

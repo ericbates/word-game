@@ -4,7 +4,7 @@ import Row from './Row';
 //Displays current input line and previous guesses
 const PlayArea = () => {
   //TEMPORARY DUMMY DATA
-  const previousGuesses = ['was', 'one', 'two', 'four', 'tear'];
+  const previousGuesses = ['was', 'one', 'two', 'four', 'tear', 'mezzanine'];
 
   //create Row components for each previous guess
   const rows = previousGuesses.map((guess, index) => {

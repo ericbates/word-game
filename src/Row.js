@@ -11,10 +11,10 @@ const ProgressIcon = (props) => {
 
 //A letter to be displayed in the PlayArea
 const Letter = (props) => {
-  const letter = props.value;
+  const letter = props.value.toUpperCase();
   return (
     <div className="letter">
-      <p>{letter}</p>
+      <h1>{letter}</h1>
     </div>
   );
 };
