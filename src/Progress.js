@@ -2,9 +2,7 @@
 const ProgressIcon = (props) => {
   const status = props.status;
   return (
-    <div className="progress-icon">
-      <p>{status}</p>
-    </div>
+    <div className={`progress-icon ${status}`}></div>
   );
 };
 
@@ -28,14 +26,14 @@ const ProgressRow = (props) => {
 const Progress = () => {
   //TEMPORARY DUMMY DATA
   const currentProgress = [
-    ['gray', 'gray', 'yellow'],
-    ['gray', 'green', 'green'],
-    ['green', 'green', 'green'],
-    ['gray', 'gray', 'gray', 'green'],
-    ['green', 'green', 'green', 'green'],
-    ['green', 'green', 'green', 'green', 'green'],
-    ['green', 'green', 'green', 'green', 'green', 'green'],
-    ['green', 'green', 'green', 'green', 'green', 'green', 'green']
+    ['absent', 'absent', 'misplaced'],
+    ['absent', 'correct', 'correct'],
+    ['correct', 'correct', 'correct'],
+    ['absent', 'absent', 'absent', 'correct'],
+    ['correct', 'correct', 'correct', 'correct'],
+    ['correct', 'correct', 'correct', 'correct', 'correct'],
+    ['correct', 'correct', 'correct', 'correct', 'correct', 'correct'],
+    ['correct', 'correct', 'correct', 'correct', 'correct', 'correct', 'correct']
   ];
 
   const rows = currentProgress.map((status, index) => <ProgressRow status={status} rowNum={index} key={`progress-${index}`} />);
