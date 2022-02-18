@@ -76,11 +76,11 @@ h2.num-correct {
   color: red;
 }
 
-.progress-play-area {
+.progress-play-container {
   display: flex;
 }
 
-.progress {
+.progress-area {
   width: 20%;
   display: grid;
   grid-template-columns: 1fr;
@@ -88,7 +88,7 @@ h2.num-correct {
   gap: 5px;
 }
 
-.progress-row {
+.row.progress {
   width: 100%;
   display: grid;
   grid-template-rows: 1fr;

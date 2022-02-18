@@ -1,30 +1,10 @@
-//A letter to be displayed in the PlayArea
-const ProgressIcon = (props) => {
-  //3 possible statuses:
-  //absent, misplaced, correct
-  const status = props.status;
-  return (
-    <div className={`progress-icon ${status}`}></div>
-  );
-};
+import Row from './Row';
 
-//A row in the PlayArea
-const ProgressRow = (props) => {
-  const status = props.status;
-  const rowNum = props.rowNum;
-
-  //create a Letter component for each letter in the word
-  const icons = status.map((iconStatus, index) => <ProgressIcon status={iconStatus} key={`progress-${rowNum},${index}`} />);
-
-  return (
-    <div className="progress-row">
-      {icons}
-    </div>
-  );
-};
-
-//The main play area
-//Displays current input line and previous guesses
+//Displays status of each previous guess
+//3 possible statuses:
+//    absent (gray)
+//    misplaced (yellow)
+//    correct (green)
 const Progress = () => {
   //TEMPORARY DUMMY DATA
   const currentProgress = [
@@ -38,10 +18,13 @@ const Progress = () => {
     ['correct', 'correct', 'correct', 'correct', 'correct', 'correct', 'correct']
   ];
 
-  const rows = currentProgress.map((status, index) => <ProgressRow status={status} rowNum={index} key={`progress-${index}`} />);
+  //create Row components for each row of progress
+  const rows = currentProgress.map((arr, index) => {
+    return <Row arr={arr} rowNum={index} rowType='progress' key={`progress-${index}`} />
+  });
 
   return (
-    <section className="progress">
+    <section className="progress-area">
       {rows}
     </section>
   );

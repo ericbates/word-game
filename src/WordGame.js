@@ -20,7 +20,7 @@ const WordGame = () => {
           numGuesses={numGuesses}
           correctGuesses={correctGuesses}
         />
-        <div className="progress-play-area">
+        <div className="progress-play-container">
           <Progress />
           <PlayArea />
         </div>

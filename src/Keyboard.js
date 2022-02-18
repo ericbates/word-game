@@ -1,12 +1,7 @@
-const KeyboardKey = (props) => {
-  const key = props.value;
-  return (
-    <div className="keyboard-key">
-      <p>{key}</p>
-    </div>
-  );
-};
+import Row from './Row';
 
+//Displays the Keyboard area
+//Used to input letters into PlayArea
 const Keyboard = () => {
   //the keys for the keyboard
   const keys = [
@@ -15,20 +10,14 @@ const Keyboard = () => {
     ['ent','z','x','c','v','b','n','m','del']
   ];
 
-  //create 3 rows of KeyboardKey components
-  const rows = keys.map(keyRow => keyRow.map(key => <KeyboardKey value={key} key={key} />));
+  //create Row components for each row of the keyboard
+  const rows = keys.map((keyRow, index) => {
+    return <Row arr={keyRow} rowNum={index} rowType='keyboard' key={`keyboard-${index}`} />;
+  });
 
   return (
     <section className="keyboard">
-      <div className="keyboardRow">
-        {rows[0]}
-      </div>
-      <div className="keyboardRow">
-        {rows[1]}
-      </div>
-      <div className="keyboardRow">
-        {rows[2]}
-      </div>
+      {rows}
     </section>
   );
 };
