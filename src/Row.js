@@ -22,8 +22,10 @@ const Letter = (props) => {
 //A key for the keyboard
 const KeyboardKey = (props) => {
   const key = props.value.toUpperCase();
+
+  const className = (key === 'ENTER' || key === 'DEL') ? "keyboard-key ent-del" : "keyboard-key";
   return (
-    <div className="keyboard-key">
+    <div className={className}>
       <h1>{key}</h1>
     </div>
   );

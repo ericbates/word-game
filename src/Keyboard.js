@@ -7,7 +7,7 @@ const Keyboard = () => {
   const keys = [
     ['q','w','e','r','t','y','u','i','o','p'],
     ['a','s','d','f','g','h','j','k','l'],
-    ['ent','z','x','c','v','b','n','m','del']
+    ['enter','z','x','c','v','b','n','m','del']
   ];
 
   //create Row components for each row of the keyboard

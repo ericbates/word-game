@@ -165,3 +165,7 @@ h2.num-correct {
   align-items: center;
   justify-content: center;
 }
+
+.keyboard-key.ent-del {
+  min-width: 100px;
+}
