@@ -32,8 +32,12 @@ header {
   background-color: rgb(128, 143, 133);
 }
 
+main {
+  max-width: 1200px;
+  margin: 60px auto 0 auto;
+}
+
 .stats-bar {
-  margin-top: 60px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding: 10px 40px;

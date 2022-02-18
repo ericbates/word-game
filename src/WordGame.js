@@ -14,14 +14,18 @@ const WordGame = () => {
       <header>
         <h1>Word Game</h1>
       </header>
-      <Stats
-        totalGuesses={totalGuesses}
-        numGuesses={numGuesses}
-        correctGuesses={correctGuesses}
-      />
-      <Progress />
-      <PlayArea />
-      <Keyboard />
+      <main>
+        <Stats
+          totalGuesses={totalGuesses}
+          numGuesses={numGuesses}
+          correctGuesses={correctGuesses}
+        />
+        <div className="progress-play-area">
+          <Progress />
+          <PlayArea />
+        </div>
+        <Keyboard />
+      </main>
     </div>
   );
 }
