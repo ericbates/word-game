@@ -113,6 +113,10 @@ h2.num-correct {
   height: 20px;
 }
 
+.absent, .misplaced, .correct {
+  color: white;
+}
+
 .progress-icon.absent {
   background-color: grey;
 }
@@ -144,6 +148,21 @@ h2.num-correct {
   justify-content: center;
 }
 
+.letter.absent {
+  background-color: grey;
+  border: 2px solid grey;
+}
+
+.letter.misplaced {
+  background-color: yellow;
+  border: 2px solid yellow;
+}
+
+.letter.correct {
+  background-color: green;
+  border: 2px solid green;
+}
+
 .keyboard-area {
   width: 100%;
   margin-top: 20px;
@@ -169,6 +188,21 @@ h2.num-correct {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.keyboard-key.absent {
+  background-color: grey;
+  border: 2px solid grey;
+}
+
+.keyboard-key.misplaced {
+  background-color: yellow;
+  border: 2px solid yellow;
+}
+
+.keyboard-key.correct {
+  background-color: green;
+  border: 2px solid green;
 }
 
 .keyboard-key.ent-del {
