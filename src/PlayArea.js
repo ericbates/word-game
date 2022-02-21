@@ -5,7 +5,7 @@ import Row from './Row';
 const PlayArea = () => {
   //TEMPORARY DUMMY DATA
   const previousGuesses = ['was', 'one', 'two', 'four', 'tear'];
-
+  
   //create Row components for each previous guess
   const rows = previousGuesses.map((guess, index) => {
     const wordArr = [...guess];
@@ -14,20 +14,22 @@ const PlayArea = () => {
 
   return (
     <section className="play-area">
-      {rows}
-      {/*TEMPORARY*/}
-      <div className="row word">
-        <div className="letter default">
-          <h1>A</h1>
-        </div>
-        <div className="letter default">
-          <h1>B</h1>
-        </div>
-        <div className="letter default empty">
-          
-        </div>
-        <div className="letter default empty">
-          
+      <div className="play-wrap">
+        {rows}
+        {/*TEMPORARY*/}
+        <div className="row word">
+          <div className="letter default">
+            <h1>A</h1>
+          </div>
+          <div className="letter default">
+            <h1>B</h1>
+          </div>
+          <div className="letter default empty">
+            
+          </div>
+          <div className="letter default empty">
+            
+          </div>
         </div>
       </div>
     </section>

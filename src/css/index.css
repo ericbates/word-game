@@ -59,14 +59,24 @@ h2.num-correct {
   flex: 1 1 auto;
 }
 
-.progress-area, .play-area, .progress-icons {
+.progress-area, .play-wrap, .progress-icons {
   display: inline-grid;
   grid-template-columns: 1fr;
   align-content: start;
 }
 
 .play-area {
-  align-content: center;
+  position: relative;
+}
+
+.play-wrap{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  gap: 6px;
 }
 
 .row.progress, .row.word, .row.keyboard {  
@@ -120,7 +130,6 @@ h2.num-correct {
 
 .play-area {
   width: 75%;
-  gap: 6px;
 }
 
 .row.word {
