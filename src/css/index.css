@@ -7,7 +7,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 20px;
-  background-color: rgba(228, 252, 225, 0.7);
 }
 
 html, body, #root, .word-game-app {
@@ -33,7 +32,7 @@ header {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  background-color: rgb(228, 252, 225);
+  background-color: white;
 }
 
 main {
@@ -64,6 +63,10 @@ h2.num-correct {
   display: inline-grid;
   grid-template-columns: 1fr;
   align-content: start;
+}
+
+.play-area {
+  align-content: center;
 }
 
 .row.progress, .row.word, .row.keyboard {  
@@ -101,12 +104,12 @@ h2.num-correct {
 }
 
 .progress-icons {
-  gap: 5px;
+  gap: 4px;
 }
 
 .row.progress {
   justify-content: start;
-  gap: 5px;
+  gap: 4px;
   padding-left: 10px;
 }
 
@@ -117,25 +120,21 @@ h2.num-correct {
 
 .play-area {
   width: 75%;
-  gap: 10px;
+  gap: 6px;
 }
 
 .row.word {
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
 }
 
 .letter {
   border: 2px solid black;
-  height: 80px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.letter.default {
-  background-color: rgb(243, 255, 239);
 }
 
 .letter.empty {
@@ -150,13 +149,13 @@ h2.num-correct {
   display: grid;
   grid-template-columns: 1fr;
   align-content: start;
-  gap: 10px;
+  gap: 6px;
   flex: 0 1 auto;
 }
 
 .row.keyboard {
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
 }
 
 .keyboard-key {
