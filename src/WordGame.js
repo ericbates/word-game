@@ -1,4 +1,3 @@
-import Stats from './Stats';
 import Progress from './Progress';
 import PlayArea from './PlayArea';
 import Keyboard from './Keyboard';
@@ -15,13 +14,8 @@ const WordGame = () => {
         <h1>Word Game</h1>
       </header>
       <main>
-        <Stats
-          totalGuesses={totalGuesses}
-          numGuesses={numGuesses}
-          correctGuesses={correctGuesses}
-        />
         <div className="progress-play-container">
-          <Progress />
+          <Progress correctGuesses={correctGuesses} />
           <PlayArea />
         </div>
         <Keyboard />

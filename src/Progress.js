@@ -5,7 +5,10 @@ import Row from './Row';
 //    absent (gray)
 //    misplaced (yellow)
 //    correct (green)
-const Progress = () => {
+//Displays previous correct guesses
+const Progress = (props) => {
+  const correctGuesses = props.correctGuesses;
+
   //TEMPORARY DUMMY DATA
   const currentProgress = [
     ['absent', 'absent', 'misplaced'],
@@ -23,9 +26,20 @@ const Progress = () => {
     return <Row arr={arr} rowNum={index} rowType='progress' key={`progress-${index}`} />
   });
 
+  const answers = correctGuesses.map((guess, index) => <h4 key={`correct-${index}`}>{guess.toUpperCase()}</h4>);
+  
+
   return (
     <section className="progress-area">
-      {rows}
+      <div className="guess-stats">
+        <h1><span className="num-guesses">10</span>/20 Guesses</h1>
+      </div>
+      <div className="correct-guesses">
+        {answers}
+      </div>
+      <div className="progress-icons">
+        {rows}
+      </div>
     </section>
   );
 };

@@ -15,12 +15,12 @@ code {
     monospace;
 }
 
-h1, h2 {
+h1, h2, h3, h4 {
   margin: 0;
 }
 
 header {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(161, 161, 161);
   height: 59px;
   width: 100%;
   position: fixed;
@@ -34,44 +34,12 @@ header {
 
 main {
   max-width: 1200px;
-  margin: 60px auto 0 auto;
-}
-
-.stats-bar {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding: 10px 40px;
-  gap: 0px 20px;
-  border-bottom: 1px solid black;
-  margin-bottom: 20px;
-}
-
-.correct-guesses {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5px 20px;
-  max-width: 800px;
-  border: 2px solid black;
-  border-radius: 60px;
-  justify-items: center;
-  padding: 20px;
-  background-color: white;
-}
-
-.correct-guesses h2 {
-  color: green;
+  margin: 80px auto 0 auto;
 }
 
 h2.num-correct {
   color: black;
   text-decoration: underline;
-}
-
-.guess-stats {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  text-align: right;
 }
 
 .num-guesses {
@@ -82,7 +50,7 @@ h2.num-correct {
   display: flex;
 }
 
-.progress-area, .play-area {
+.progress-area, .play-area, .progress-icons {
   display: grid;
   grid-template-columns: 1fr;
   align-content: start;
@@ -96,10 +64,33 @@ h2.num-correct {
 }
 
 .progress-area {
-  width: 20%;
-  gap: 5px;
-  border-right: 1px solid black;
+  width: 25%;
+  border-right: 1px solid rgb(161, 161, 161);
+  gap: 10px;
+}
+
+.guess-stats {
   padding: 10px 0px;
+  border-bottom: 1px solid rgb(161, 161, 161);
+  margin-right: 20px;
+}
+
+.correct-guesses {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  justify-items: start;
+  border-bottom: 1px solid rgb(161, 161, 161);
+  margin-right: 20px;
+  padding-bottom: 10px;
+}
+
+.correct-guesses h4 {
+  color: rgb(34,139,34);
+}
+
+.progress-icons {
+  gap: 5px;
 }
 
 .row.progress {
@@ -114,7 +105,7 @@ h2.num-correct {
 }
 
 .play-area {
-  width: 80%;
+  width: 75%;
   gap: 10px;
 }
 
@@ -137,14 +128,14 @@ h2.num-correct {
 }
 
 .letter.empty {
-  border-color: rgb(161, 161, 161)
+  border-color: rgb(161, 161, 161);
 }
 
 .keyboard-area {
   width: 100%;
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid black;
+  border-top: 1px solid rgb(161, 161, 161);
   display: grid;
   grid-template-columns: 1fr;
   align-content: start;
