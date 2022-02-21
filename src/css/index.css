@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 20px;
-  background-color: rgb(128, 143, 133);
+  background-color: rgba(228, 252, 225, 0.7);
 }
 
 code {
@@ -29,7 +29,7 @@ header {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  background-color: rgb(128, 143, 133);
+  background-color: rgba(228, 252, 225, 0.7);
 }
 
 main {
@@ -113,22 +113,6 @@ h2.num-correct {
   height: 20px;
 }
 
-.absent, .misplaced, .correct {
-  color: white;
-}
-
-.progress-icon.absent {
-  background-color: grey;
-}
-
-.progress-icon.misplaced {
-  background-color: yellow;
-}
-
-.progress-icon.correct {
-  background-color: green;
-}
-
 .play-area {
   width: 80%;
   gap: 10px;
@@ -148,19 +132,12 @@ h2.num-correct {
   justify-content: center;
 }
 
-.letter.absent {
-  background-color: grey;
-  border: 2px solid grey;
+.letter.default {
+  background-color: rgb(243, 255, 239);
 }
 
-.letter.misplaced {
-  background-color: yellow;
-  border: 2px solid yellow;
-}
-
-.letter.correct {
-  background-color: green;
-  border: 2px solid green;
+.letter.empty {
+  border-color: rgb(161, 161, 161)
 }
 
 .keyboard-area {
@@ -190,21 +167,25 @@ h2.num-correct {
   justify-content: center;
 }
 
-.keyboard-key.absent {
-  background-color: grey;
-  border: 2px solid grey;
-}
-
-.keyboard-key.misplaced {
-  background-color: yellow;
-  border: 2px solid yellow;
-}
-
-.keyboard-key.correct {
-  background-color: green;
-  border: 2px solid green;
-}
-
 .keyboard-key.ent-del {
   min-width: 100px;
+}
+
+.absent, .misplaced, .correct {
+  color: white;
+}
+
+.absent {
+  background-color: rgb(161, 161, 161);
+  border-color: rgb(161, 161, 161);
+}
+
+.misplaced {
+  background-color: rgb(255,216,0);
+  border-color: rgb(255,216,0);
+}
+
+.correct {
+  background-color: rgb(34,139,34);
+  border-color: rgb(34,139,34);
 }

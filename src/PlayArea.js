@@ -17,16 +17,16 @@ const PlayArea = () => {
       {rows}
       {/*TEMPORARY*/}
       <div className="row word">
-        <div className="letter defualt">
+        <div className="letter default">
           <h1>A</h1>
         </div>
-        <div className="letter defualt">
+        <div className="letter default">
           <h1>B</h1>
         </div>
-        <div className="letter defualt empty">
+        <div className="letter default empty">
           
         </div>
-        <div className="letter defualt empty">
+        <div className="letter default empty">
           
         </div>
       </div>

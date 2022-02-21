@@ -17,7 +17,7 @@ const Letter = (props) => {
   const letter = props.value.toUpperCase();
 
   //TEMPORARY for styling purposes
-  const status = statuses[Math.floor(Math.random() * 4)];
+  const status = statuses[Math.floor(Math.random() * 3)];
   return (
     <div className={`letter ${status}`}>
       <h1>{letter}</h1>
