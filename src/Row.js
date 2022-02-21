@@ -1,3 +1,6 @@
+//possible Row child component statuses
+const statuses = ['absent', 'misplaced', 'correct', 'default'];
+
 //A square div to indicate game progress
 const ProgressIcon = (props) => {
   //3 possible statuses:
@@ -12,8 +15,11 @@ const ProgressIcon = (props) => {
 //A letter to be displayed in the PlayArea
 const Letter = (props) => {
   const letter = props.value.toUpperCase();
+
+  //TEMPORARY for styling purposes
+  const status = statuses[Math.floor(Math.random() * 4)];
   return (
-    <div className="letter">
+    <div className={`letter ${status}`}>
       <h1>{letter}</h1>
     </div>
   );
@@ -23,9 +29,12 @@ const Letter = (props) => {
 const KeyboardKey = (props) => {
   const key = props.value.toUpperCase();
 
+  //TEMPORARY for styling purposes
+  const status = statuses[Math.floor(Math.random() * 4)];
+
   const className = (key === 'ENTER' || key === 'DEL') ? "keyboard-key ent-del" : "keyboard-key";
   return (
-    <div className={className}>
+    <div className={`${className} ${status}`}>
       <h1>{key}</h1>
     </div>
   );
