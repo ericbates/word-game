@@ -81,7 +81,7 @@ h2.num-correct {
 }
 
 .guess-stats {
-  padding: 10px 0px;
+  padding: 10px 0px 10px 10px;
   border-bottom: 1px solid rgb(161, 161, 161);
   margin-right: 20px;
 }
@@ -93,7 +93,7 @@ h2.num-correct {
   justify-items: start;
   border-bottom: 1px solid rgb(161, 161, 161);
   margin-right: 20px;
-  padding-bottom: 10px;
+  padding: 0px 0px 10px 10px;
 }
 
 .correct-guesses h4 {
