@@ -54,22 +54,12 @@ main {
   position: relative;
 }
 
-#progress-area-overflow-scroll {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
 #play-area {
   width: 80%;
   position: relative;
 }
 
-#play-area-overflow-scroll{
+#progress-area-overflow-scroll, #play-area-overflow-scroll{
   position: absolute;
   left: 0;
   right: 0;
