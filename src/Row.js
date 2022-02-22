@@ -35,7 +35,7 @@ const KeyboardKey = (props) => {
   const className = (key === 'ENTER' || key === 'DEL') ? "keyboard-key ent-del" : "keyboard-key";
   return (
     <div className={`${className} ${status}`}>
-      <h1>{key}</h1>
+      <h4>{key}</h4>
     </div>
   );
 };
