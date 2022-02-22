@@ -30,7 +30,10 @@ const KeyboardKey = (props) => {
   const key = props.value.toUpperCase();
 
   //TEMPORARY for styling purposes
-  const status = statuses[Math.floor(Math.random() * 4)];
+  let status = statuses[Math.floor(Math.random() * 4)];
+  if(key === 'ENTER' || key === 'DEL') {
+    status = 'default';
+  }
 
   const className = (key === 'ENTER' || key === 'DEL') ? "keyboard-key ent-del" : "keyboard-key";
   return (
