@@ -1,0 +1,61 @@
+#progress-area-overflow-scroll {
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 10px;
+}
+
+/* GuessStats */
+
+#guess-stats {
+  padding: 10px 0px 10px 10px;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  margin-right: 20px;
+  color: rgb(48, 48, 48);
+}
+
+#num-guesses {
+  color: rgb(180, 0, 0);
+}
+
+
+/* FoundAnswers */
+
+#found-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  justify-items: start;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  margin-right: 20px;
+  padding: 0px 0px 10px 10px;
+}
+
+#found-answers h4 {
+  color: rgb(102, 148, 77);
+}
+
+
+/* ProgressIcons */
+
+#progress-icons {
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 4px;
+}
+
+.progress-row {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 4px;
+  padding-left: 10px;
+}
+
+.progress-icon {
+  width: 20px;
+  height: 20px;
+}

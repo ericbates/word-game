@@ -1,12 +1,14 @@
-import Progress from './Progress';
-import PlayArea from './PlayArea';
-import Keyboard from './Keyboard';
+import ProgressArea from './ProgressArea/ProgressArea';
+import PlayArea from './PlayArea/PlayArea';
+import KeyboardArea from './KeyboardArea/KeyboardArea';
+import "./css/WordGame.css";
+import './css/StatusColors.css';
 
 const WordGame = () => {
   //TEMPORARY DUMMY DATA 
   const totalGuesses = 20;
   let numGuesses = 10;
-  const correctGuesses = ['two', 'tear', 'index', 'apples', 'jukebox', 'blizzard'];
+  const foundAnswers = ['two', 'tear', 'index', 'apples', 'jukebox', 'blizzard'];
 
   return (
     <div className="word-game-app">
@@ -14,11 +16,15 @@ const WordGame = () => {
         <h1>Word Game</h1>
       </header>
       <main>
-        <div className="progress-play-container">
-          <Progress correctGuesses={correctGuesses} />
+        <div id="progress-play-container">
+          <ProgressArea
+            foundAnswers={foundAnswers}
+            numGuesses={numGuesses}
+            totalGuesses={totalGuesses}
+          />
           <PlayArea />
         </div>
-        <Keyboard />
+        <KeyboardArea />
       </main>
     </div>
   );
