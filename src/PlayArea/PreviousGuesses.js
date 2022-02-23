@@ -1,5 +1,5 @@
 //possible Row child component statuses
-const statuses = ['absent', 'misplaced', 'correct', 'default'];
+const statuses = ['absent', 'misplaced', 'correct'];
 
 //Renders all previous guesses for the current word
 //Each letter will have a status
