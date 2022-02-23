@@ -18,13 +18,13 @@
   border: 2px solid rgb(201, 201, 201);
   background-color: rgb(201, 201, 201);
   border-radius: 5px;
-  height: 60px;
-  width: 45px;
+  height: 55px;
+  width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .keyboard-key.ent-del {
-  width: 75px;
+  width: 68px;
 }
