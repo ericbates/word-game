@@ -82,6 +82,9 @@ main {
   box-sizing: border-box;
 }
 
+
+/* Media Queries */
+
 @media only screen and (max-width: 650px) {
   header {
     height: 40px;
@@ -96,11 +99,10 @@ main {
   }
 }
 
-@media only screen and (max-height: 600px) and (orientation: landscape) {
-  #keyboard-area {
-    padding: 5px 10px;
-  }
 
+/* Mobile Landscape */
+
+@media only screen and (max-height: 600px) and (orientation: landscape) {
   header {
     height: 40px;
   }
@@ -111,5 +113,9 @@ main {
 
   main {
     padding-top: 60px;
+  }
+
+  #keyboard-area {
+    padding: 5px 10px;
   }
 }

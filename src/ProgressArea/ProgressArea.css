@@ -71,6 +71,8 @@
 }
 
 
+/* Media Queries */
+
 @media only screen and (max-width: 650px) {
   #guess-stats h1 {
     font-size: 1.2em;
@@ -109,6 +111,8 @@
   }
 }
 
+
+/* Mobile Landscape */
 
 @media only screen and (max-height: 600px) and (orientation: landscape) {
   #progress-icons {

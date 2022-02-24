@@ -41,6 +41,9 @@
   font-size: 0.8em;
 }
 
+
+/* Media Queries */
+
 @media only screen and (max-width: 900px) {
   .keyboard-row {
     grid-auto-columns: 5%;
@@ -73,6 +76,9 @@
     font-size: 0.6em;
   }
 }
+
+
+/* Mobile Landscape */
 
 @media only screen and (max-height: 600px) and (orientation: landscape) {
   .keyboard-row {
