@@ -108,3 +108,23 @@
     width: 40px;
   }
 }
+
+
+@media only screen and (max-height: 600px) and (orientation: landscape) {
+  #progress-icons {
+    display:none;
+  }
+
+  #guess-stats h1 {
+    font-size: 1.2em;
+  }
+
+  #found-answers {
+    border-bottom: none;
+  }
+
+  #found-answers h2 {
+    font-size: 0.75em;
+    width: 68px;
+  }
+}

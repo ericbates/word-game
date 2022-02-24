@@ -83,3 +83,14 @@
     margin-top: 2px;
   }
 }
+
+@media only screen and (max-height: 600px) and (orientation: landscape) {
+  .word-row {
+    grid-auto-columns: 3.5%;
+  }
+
+  .letter h1 {
+    font-size: 0.6em;
+    margin-top: 3px;
+  }
+}

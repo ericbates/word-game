@@ -95,3 +95,21 @@ main {
     padding-top: 60px;
   }
 }
+
+@media only screen and (max-height: 600px) and (orientation: landscape) {
+  #keyboard-area {
+    padding: 5px 10px;
+  }
+
+  header {
+    height: 40px;
+  }
+
+  header h1 {
+    font-size: 1.2em;
+  }
+
+  main {
+    padding-top: 60px;
+  }
+}

@@ -73,3 +73,13 @@
     font-size: 0.6em;
   }
 }
+
+@media only screen and (max-height: 600px) and (orientation: landscape) {
+  .keyboard-row {
+    grid-auto-columns: 3.5%;
+  }
+
+  .keyboard-key h3 {
+    font-size: 0.6em;
+  }
+}
