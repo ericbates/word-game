@@ -15,7 +15,13 @@ const Keyboard = (props) => {
             status = 'default';
           }
 
-          const className = (key === 'ENTER' || key === 'DEL') ? "keyboard-key ent-del" : "keyboard-key";
+          let className = "keyboard-key";
+          if(key === 'ENTER') {
+            className += ' ent';
+          } else if(key === 'DEL') {
+            className += ' del';
+          }
+          
           return (
             //build a 'keyboard-key' div for each key in the row
             <div
