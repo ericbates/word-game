@@ -60,7 +60,7 @@
   }
 
   .letter h1 {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-top: 4px;
   }
 }
@@ -71,7 +71,7 @@
   }
 
   .letter h1 {
-    font-size: 0.8em;
+    font-size: 1.2em;
     margin-top: 3px;
   }
 }
@@ -79,7 +79,7 @@
 @media only screen and (max-width: 340px) {
 
   .letter h1 {
-    font-size: 0.5em;
+    font-size: 0.8em;
     margin-top: 2px;
   }
 }
