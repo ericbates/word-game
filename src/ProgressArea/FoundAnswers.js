@@ -5,7 +5,7 @@ const FoundAnswers = (props) => {
   return (
     <div id="found-answers">
       {answers.map((answer, index) => {
-        return <h4 key={`answer-${index}`}>{answer.toUpperCase()}</h4>
+        return <h2 key={`answer-${index}`}>{answer.toUpperCase()}</h2>
       })}
     </div>
   );

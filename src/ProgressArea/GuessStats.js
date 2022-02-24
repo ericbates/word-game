@@ -5,7 +5,7 @@ const GuessStats = (props) => {
 
   return (
     <div id="guess-stats">
-        <h1><span id="num-guesses">{numGuesses}</span>/{totalGuesses} Guesses</h1>
+        <h1><span id="num-guesses">{numGuesses}</span>/{totalGuesses}</h1>
     </div>
   );
 }

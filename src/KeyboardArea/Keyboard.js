@@ -22,7 +22,7 @@ const Keyboard = (props) => {
               className={`${className} ${status}`}
               key={`keyboard-key-${rowIndex},${keyIndex}`}
             >
-              <h4>{key.toUpperCase()}</h4>
+              <h3>{key.toUpperCase()}</h3>
             </div>
           );
         })}

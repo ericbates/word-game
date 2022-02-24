@@ -14,6 +14,11 @@
   padding: 10px;
   border-bottom: 1px solid rgb(201, 201, 201);
   color: rgb(48, 48, 48);
+  text-align: center;
+}
+
+#guess-stats h1 {
+  font-size: 2em;
 }
 
 #num-guesses {
@@ -31,9 +36,10 @@
   padding: 0px 10px 10px 10px;
 }
 
-#found-answers h4 {
+#found-answers h2 {
   color: rgb(102, 148, 77);
   width: 120px;
+  font-size: 1.2em;
 }
 
 
