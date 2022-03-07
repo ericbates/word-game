@@ -1,0 +1,102 @@
+#play-area-overflow-scroll{
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 6px;
+  padding: 20px 0;
+}
+
+
+/* Previous and Current Guesses */
+
+#previous-guesses, #current-guess {
+  display: inline-grid;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 6px;
+}
+
+.word-row {
+  display: grid;
+  width: 100%;
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+  grid-auto-columns: 9%;
+  justify-content: center;
+  gap: 6px;
+}
+
+.letter {
+  border: 2px solid rgb(48, 48, 48);
+  color: rgb(48, 48, 48);
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter h1 {
+  font-size: 1.8em;
+  margin-top: 2px;
+  line-height: 0;
+}
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 650px) {
+  #play-area-overflow-scroll, #previous-guesses, #current-guess, .word-row {
+    gap: 4px;
+  }
+
+  .word-row {
+    grid-auto-columns: 10%;
+  }
+
+  .letter {
+    border-width: 1px;
+  }
+
+  .letter h1 {
+    font-size: 1.5em;
+    margin-top: 4px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #play-area-overflow-scroll, #previous-guesses, #current-guess, .word-row {
+    gap: 3px;
+  }
+
+  .letter h1 {
+    font-size: 1.2em;
+    margin-top: 3px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+
+  .letter h1 {
+    font-size: 0.8em;
+    margin-top: 2px;
+  }
+}
+
+
+/* Mobile Landscape */
+
+@media only screen and (max-height: 600px) and (orientation: landscape) {
+  .word-row {
+    grid-auto-columns: 3.5%;
+  }
+
+  .letter h1 {
+    font-size: 0.6em;
+    margin-top: 3px;
+  }
+}

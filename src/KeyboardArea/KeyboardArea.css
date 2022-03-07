@@ -1,0 +1,90 @@
+#keyboard-area {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 6px;
+}
+
+.keyboard-row {  
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+  justify-content: center;
+  grid-auto-columns: 4%;
+  gap: 6px;
+}
+
+.keyboard-key {
+  border: 2px solid rgb(201, 201, 201);
+  background-color: rgb(201, 201, 201);
+  border-radius: 4px;
+  width: 100%;
+  aspect-ratio: 0.7;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard-key.ent, .keyboard-key.del {
+  width: 158%;
+  aspect-ratio: 1.11;
+}
+
+.keyboard-key.ent {
+  justify-self: end;
+}
+
+.keyboard-key h3 {
+  font-size: 0.8em;
+}
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 900px) {
+  .keyboard-row {
+    grid-auto-columns: 5%;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .keyboard-row {
+    grid-auto-columns: 6%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .keyboard-row {
+    grid-auto-columns: 8%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .keyboard-row {
+    grid-auto-columns: 8.5%;
+  }
+  .keyboard-key {
+    aspect-ratio: 0.55;
+  }
+  .keyboard-key.ent, .keyboard-key.del {
+    aspect-ratio: 0.87;
+  }
+  .keyboard-key h3 {
+    font-size: 0.6em;
+  }
+}
+
+
+/* Mobile Landscape */
+
+@media only screen and (max-height: 600px) and (orientation: landscape) {
+  .keyboard-row {
+    grid-auto-columns: 3.5%;
+  }
+
+  .keyboard-key h3 {
+    font-size: 0.6em;
+  }
+}
