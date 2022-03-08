@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import KeyboardArea from '../KeyboardArea/KeyboardArea';
+import KeyboardArea from './KeyboardArea/KeyboardArea';
 import PreviousGuesses from "./PreviousGuesses";
 import CurrentGuess from "./CurrentGuess";
 import "./PlayArea.css";
