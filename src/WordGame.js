@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ProgressArea from './ProgressArea/ProgressArea';
 import PlayArea from './PlayArea/PlayArea';
 import KeyboardArea from './KeyboardArea/KeyboardArea';
@@ -7,16 +7,19 @@ import './css/StatusColors.css';
 import React from 'react';
 
 const WordGame = () => {
-  //TEMPORARY DUMMY DATA 
-  const totalGuesses = 20;
-  let numGuesses = 10;
+  //TEMPORARY DUMMY DATA
   const foundAnswers = ['two', 'tear', 'index', 'apples', 'jukebox', 'aaaaaaaa'];
+
+  const [previousGuesses, setPreviousGuesses] = useState([]);
+  const [currentGuess, setCurrentGuess] = useState('');
+  const totalGuesses = 20;
+  const numGuesses = previousGuesses.length;
 
   //listen for keystrokes
   useEffect (() => {
     const handleKeyDown = (event) => {
       //check if pressed key is a single letter
-      if(/^[a-zA-Z]{1}$/.test(event.key)){
+      if(/^[a-zA-Z]{1}$/.test(event.key)) {
         
       }
     };
