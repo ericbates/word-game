@@ -7,25 +7,6 @@ import React from 'react';
 
 const WordGame = () => {
   const [previousGuesses, setPreviousGuesses] = useState([]);
-  const [currentGuess, setCurrentGuess] = useState('');
-
-  //listen for keystrokes
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      //check if pressed key is a single letter
-      if(/^[a-zA-Z]{1}$/.test(event.key)) {
-        
-      }
-      if(event.key === 'Enter') {
-        setCurrentGuess(prevCurrentGuess => prevCurrentGuess.concat("a"));
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
 
   return (
     <div className="word-game-app">
@@ -34,7 +15,7 @@ const WordGame = () => {
       </header>
       <main>
           <ProgressArea previousGuesses={previousGuesses} />
-          <PlayArea previousGuesses={previousGuesses} currentGuess={currentGuess} />
+          <PlayArea previousGuesses={previousGuesses} />
       </main>
     </div>
   );
