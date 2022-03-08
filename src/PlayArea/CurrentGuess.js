@@ -1,5 +1,9 @@
 //Renders the active input row
-const CurrentGuess = () => {
+const CurrentGuess = (props) => {
+  //TEMPORARY DUMMY DATA
+  const guessLength = 5;
+  const currentGuess = props.currentGuess;
+
   return (
     <div id="current-guess">
       <div className="word-row">

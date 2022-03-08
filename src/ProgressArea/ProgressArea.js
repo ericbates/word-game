@@ -4,11 +4,12 @@ import ProgressIcons from "./ProgressIcons";
 import './ProgressArea.css';
 
 const ProgressArea = (props) => {
-  const foundAnswers = props.foundAnswers;
-  const numGuesses = props.numGuesses;
-  const totalGuesses = props.totalGuesses;
+  const previousGuesses = props.previousGuesses;
+  const totalGuesses = 20;
+  const numGuesses = previousGuesses.length;
 
   //TEMPORARY DUMMY DATA
+  const foundAnswers = ['two', 'tear', 'index', 'apples', 'jukebox', 'aaaaaaaa'];
   const currentProgress = [
     ['absent', 'absent', 'misplaced'],
     ['absent', 'correct', 'correct'],

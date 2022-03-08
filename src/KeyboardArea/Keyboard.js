@@ -37,9 +37,9 @@ const Keyboard = (props) => {
   });
 
   return (
-    <div id="keyboard-area">
+    <section id="keyboard-area">
       {rows}
-    </div>
+    </section>
   );
 }
 
