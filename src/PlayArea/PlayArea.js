@@ -10,9 +10,14 @@ import './PlayArea.css';
 const PlayArea = (props) => {
   const [currentGuess, setCurrentGuess] = useState('');
 
+  const guessLength = props.foundAnswers.length + 3;
+  const setPreviousGuesses = props.setPreviousGuesses;
+
   const typeLetter = useCallback((letter) => {
-    setCurrentGuess(prevCurrentGuess => prevCurrentGuess.concat(letter));
-  }, [])
+    if(currentGuess.length < guessLength) {
+      setCurrentGuess(prevCurrentGuess => prevCurrentGuess.concat(letter));
+    }
+  }, [currentGuess, guessLength])
 
   const deleteLetter = useCallback(() => {
     if(currentGuess.length > 0) {
@@ -20,16 +25,23 @@ const PlayArea = (props) => {
     }
   }, [currentGuess])
 
+  const submitGuess = useCallback(() => {
+    if(currentGuess.length === guessLength) {
+      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, currentGuess]);
+      setCurrentGuess('');
+    }
+  }, [currentGuess, guessLength, setPreviousGuesses])
+
   //listen for keystrokes
   useEffect(() => {
     const handleKeyDown = (event) => {
       //check if pressed key is a single letter
       if(/^[a-zA-Z]{1}$/.test(event.key)) {
         typeLetter(event.key);
-      } else if(event.key === 'Enter') {
-        //setCurrentGuess(prevCurrentGuess => prevCurrentGuess.concat("a"));
       } else if(event.key === 'Delete' || event.key === 'Backspace') {
         deleteLetter();
+      } else if(event.key === 'Enter') {
+        submitGuess();
       }
     }
 
@@ -37,14 +49,14 @@ const PlayArea = (props) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     }
-  }, [typeLetter, deleteLetter])
+  }, [typeLetter, deleteLetter, submitGuess])
 
   return (
     <>
       <section id='play-area'>
         <div id='play-area-overflow-scroll'>
           <PreviousGuesses guesses={props.previousGuesses} />
-          <CurrentGuess guess={currentGuess} />
+          <CurrentGuess guess={currentGuess} guessLength={guessLength}/>
         </div>
       </section>
       <KeyboardArea />

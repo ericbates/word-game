@@ -1,7 +1,7 @@
 //Renders the active input row
 const CurrentGuess = (props) => {
   //TEMPORARY DUMMY DATA
-  const guessLength = 5;
+  const guessLength = props.guessLength;
   const guess = props.guess;
 
   const letters = [];
