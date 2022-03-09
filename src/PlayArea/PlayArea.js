@@ -6,17 +6,17 @@ import './PlayArea.css';
 
 //The main play area
 //Displays current input line and previous guesses
+//Displays KeyboardArea as child component
 const PlayArea = (props) => {
-const [currentGuess, setCurrentGuess] = useState('');
+  const [currentGuess, setCurrentGuess] = useState('');
 
-  const typeLetter = (letter) => {
+  const typeLetter = useCallback((letter) => {
     setCurrentGuess(prevCurrentGuess => prevCurrentGuess.concat(letter));
-  }
+  }, [])
 
   const deleteLetter = useCallback(() => {
-    alert(currentGuess);
     if(currentGuess.length > 0) {
-      //setCurrentGuess(prevCurrentGuess => prevCurrentGuess.substring(0, prevCurrentGuess.length - 1));
+      setCurrentGuess(prevCurrentGuess => prevCurrentGuess.substring(0, prevCurrentGuess.length - 1));
     }
   }, [currentGuess])
 
@@ -37,7 +37,7 @@ const [currentGuess, setCurrentGuess] = useState('');
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     }
-  }, [deleteLetter])
+  }, [typeLetter, deleteLetter])
 
   return (
     <>
