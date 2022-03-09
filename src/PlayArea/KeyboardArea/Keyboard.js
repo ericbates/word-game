@@ -6,7 +6,7 @@ const Keyboard = (props) => {
   const rows = keys.map((keyRow, rowIndex) => {
     return (
       //create a 'keyboard-row' div for each row of keys (3)
-      <div className="keyboard-row" key={`keyboard-row-${rowIndex}`}>
+      <div className='keyboard-row' key={`keyboard-row-${rowIndex}`}>
         {keyRow.map((key, keyIndex) => {
           key = key.toUpperCase();
           //TEMPORARY for styling purposes
@@ -15,7 +15,7 @@ const Keyboard = (props) => {
             status = 'default';
           }
 
-          let className = "keyboard-key";
+          let className = 'keyboard-key';
           if(key === 'ENTER') {
             className += ' ent';
           } else if(key === 'DEL') {
@@ -30,17 +30,17 @@ const Keyboard = (props) => {
             >
               <h3>{key.toUpperCase()}</h3>
             </div>
-          );
+          )
         })}
       </div>
-    );
-  });
+    )
+  })
 
   return (
-    <section id="keyboard-area">
+    <section id='keyboard-area'>
       {rows}
     </section>
-  );
+  )
 }
 
 export default Keyboard;

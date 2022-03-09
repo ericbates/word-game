@@ -1,6 +1,6 @@
-import GuessStats from "./GuessStats";
-import FoundAnswers from "./FoundAnswers";
-import ProgressIcons from "./ProgressIcons";
+import GuessStats from './GuessStats';
+import FoundAnswers from './FoundAnswers';
+import ProgressIcons from './ProgressIcons';
 import './ProgressArea.css';
 
 const ProgressArea = (props) => {
@@ -23,14 +23,14 @@ const ProgressArea = (props) => {
   ];
 
   return (
-    <section id="progress-area">
-      <div id="progress-area-overflow-scroll">
+    <section id='progress-area'>
+      <div id='progress-area-overflow-scroll'>
         <GuessStats numGuesses={numGuesses} totalGuesses={totalGuesses} />
         <FoundAnswers answers={foundAnswers} />
         <ProgressIcons currentProgress={currentProgress} />
       </div>
     </section>
-  );
+  )
 }
 
 export default ProgressArea;

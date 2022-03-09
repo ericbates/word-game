@@ -5,35 +5,35 @@ const CurrentGuess = (props) => {
   const currentGuess = props.currentGuess;
 
   return (
-    <div id="current-guess">
-      <div className="word-row">
-        <div className="letter">
+    <div id='current-guess'>
+      <div className='word-row'>
+        <div className='letter'>
           <h1>A</h1>
         </div>
-        <div className="letter">
+        <div className='letter'>
           <h1>B</h1>
         </div>
-        <div className="letter empty">
+        <div className='letter empty'>
           
         </div>
-        <div className="letter empty">
+        <div className='letter empty'>
           
         </div>
-        <div className="letter empty">
+        <div className='letter empty'>
           
         </div>
-        <div className="letter empty">
+        <div className='letter empty'>
           
         </div>
-        <div className="letter empty">
+        <div className='letter empty'>
           
         </div>
-        <div className="letter empty">
+        <div className='letter empty'>
           
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default CurrentGuess;

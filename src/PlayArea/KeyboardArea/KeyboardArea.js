@@ -1,5 +1,5 @@
-import Keyboard from "./Keyboard";
-import "./KeyboardArea.css";
+import Keyboard from './Keyboard';
+import './KeyboardArea.css';
 
 //Displays the Keyboard area
 //Used to input letters into PlayArea
@@ -13,7 +13,7 @@ const KeyboardArea = () => {
 
   return (
     <Keyboard keys={keys} />
-  );
+  )
 }
 
 export default KeyboardArea;

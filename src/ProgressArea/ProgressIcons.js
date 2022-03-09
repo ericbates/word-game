@@ -10,7 +10,7 @@ const ProgressIcons = (props) => {
   const rows = currentProgress.map((row, rowIndex) => {
     return (
       //build a 'progress-row' div for each row
-      <div className="progress-row" key={`progress-row-${rowIndex}`}>
+      <div className='progress-row' key={`progress-row-${rowIndex}`}>
         {row.map((iconStatus, iconIndex) => {
           return (
             //build a 'progress-icon' div for each progressIcon in the row
@@ -18,17 +18,17 @@ const ProgressIcons = (props) => {
               className={`progress-icon ${iconStatus}`}
               key={`progress-icon-${rowIndex},${iconIndex}`}
             />
-          );
+          )
         })}
       </div>
-    ); 
-  });
+    ) 
+  })
 
   return (
-    <div id="progress-icons">
+    <div id='progress-icons'>
       {rows}
     </div>
-  );
+  )
 } 
 
 export default ProgressIcons;

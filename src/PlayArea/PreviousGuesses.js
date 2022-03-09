@@ -15,7 +15,7 @@ const PreviousGuesses = (props) => {
     const wordLength = wordArr.length;
     return (
       //build a 'word-row' div for each word
-      <div className="word-row" key={`word_${wordLength}-${guessIndex}`}>
+      <div className='word-row' key={`word_${wordLength}-${guessIndex}`}>
         {wordArr.map((letter, letterIndex) => {
           //TEMPORARY for styling purposes
           const status = statuses[Math.floor(Math.random() * 3)];
@@ -28,17 +28,17 @@ const PreviousGuesses = (props) => {
             >
               <h1>{letter.toUpperCase()}</h1>
             </div>
-          );
+          )
         })}
       </div>
-    );
-  });
+    )
+  })
   
   return (
-    <div id="previous-guesses">
+    <div id='previous-guesses'>
       {rows}
     </div>
-  );
+  )
 }
 
 export default PreviousGuesses;
