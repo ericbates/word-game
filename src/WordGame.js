@@ -6,7 +6,8 @@ import './css/StatusColors.css';
 import React from 'react';
 
 const WordGame = () => {
-  const [previousGuesses, setPreviousGuesses] = useState([]);
+  //const [previousGuesses, setPreviousGuesses] = useState([]);
+  const previousGuesses = ['was', 'one', 'two', 'four', 'tear', 'blizzard'];
 
   return (
     <div className='word-game-app'>

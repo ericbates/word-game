@@ -2,14 +2,14 @@
 const CurrentGuess = (props) => {
   //TEMPORARY DUMMY DATA
   const guessLength = 5;
-  const currentGuess = props.currentGuess;
+  const guess = props.guess;
 
   const letters = [];
   for(let i = 0; i < guessLength; i++) {
-    if(i < currentGuess.length) {
+    if(i < guess.length) {
       letters.push(
         <div className='letter' key={`current-guess_${i}`}>
-          <h1>{currentGuess.charAt(i).toUpperCase()}</h1>
+          <h1>{guess.charAt(i).toUpperCase()}</h1>
         </div>
       )
     } else {

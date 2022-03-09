@@ -1,3 +1,5 @@
+import React from 'react';
+
 //possible Row child component statuses
 const statuses = ['absent', 'misplaced', 'correct'];
 
@@ -41,4 +43,4 @@ const PreviousGuesses = (props) => {
   )
 }
 
-export default PreviousGuesses;
+export default React.memo(PreviousGuesses);
