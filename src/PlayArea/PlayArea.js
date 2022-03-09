@@ -6,7 +6,7 @@ import './PlayArea.css';
 
 //The main play area
 //Displays current input line and previous guesses
-const PlayArea = (props) => {
+const PlayArea = () => {
   //TEMPORARY DUMMY DATA
   const previousGuesses = ['was', 'one', 'two', 'four', 'tear', 'blizzard'];
 
@@ -35,7 +35,7 @@ const PlayArea = (props) => {
       <section id='play-area'>
         <div id='play-area-overflow-scroll'>
           <PreviousGuesses guesses={previousGuesses} />
-          <CurrentGuess guess={props.currentGuess} />
+          <CurrentGuess currentGuess={currentGuess} />
         </div>
       </section>
       <KeyboardArea />
