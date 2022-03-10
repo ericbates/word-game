@@ -3,7 +3,6 @@ import Keyboard from './Keyboard';
 import PreviousGuesses from './PreviousGuesses';
 import CurrentGuess from './CurrentGuess';
 import './PlayArea.css';
-import statuses from '../statuses';
 
 //The main play area
 //manages currentGuess state and adds to previousGuess state upon submit
@@ -37,30 +36,6 @@ const PlayArea = (props) => {
     return guessObject;
   }, [wordNum])
 
-  //updates class of Keyboard keys to show status
-  const updateKeyboard = (previousGuess) => {
-    [...previousGuess.guess].forEach((letter, index) => {
-      statuses.forEach(status => {
-        if(document.getElementById(letter).classList.contains(status)) {
-          document.getElementById(letter).classList.remove(status);
-        }
-      })
-      document.getElementById(letter).classList.add(statuses[previousGuess.status[index]]);
-    })
-
-    //if guess is correct, clear keyboard statuses
-    if(previousGuess.correct) {
-      const keys = document.getElementsByClassName('keyboard-key');
-      for(let i = 0; i < keys.length; i++) {
-        statuses.forEach(status => {
-          if(keys[i].classList.contains(status)) {
-            keys[i].classList.remove(status);
-          }
-        })
-      }
-    }
-  }
-
   //recieves a single character and adds it to the current guess
   const typeLetter = useCallback((letter) => {
     if(currentGuess.length < guessLength) {
@@ -84,7 +59,7 @@ const PlayArea = (props) => {
     if(currentGuess.length === guessLength) {
       const guess = validateGuess(currentGuess);
       setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guess]);
-      updateKeyboard(guess);
+      //updateKeyboard(guess);
       setCurrentGuess('');
     }
   }, [currentGuess, guessLength, setPreviousGuesses, validateGuess])
@@ -107,7 +82,7 @@ const PlayArea = (props) => {
       if(previousGuess.correct) {
         setFoundAnswers(prevFoundAnswers => [...prevFoundAnswers, currentGuess]);
       }
-      updateKeyboard(previousGuess);
+      //updateKeyboard(previousGuess);
       setCurrentGuess('');
     }
   }, [currentGuess, guessLength, setPreviousGuesses, setFoundAnswers, wordNum])
@@ -143,7 +118,7 @@ const PlayArea = (props) => {
           <CurrentGuess guess={currentGuess} guessLength={guessLength}/>
         </div>
       </section>
-      <Keyboard typeLetter={typeLetter} deleteLetter={deleteLetter} submitGuess={submitGuess} />
+      <Keyboard typeLetter={typeLetter} deleteLetter={deleteLetter} submitGuess={submitGuess} wordNum={wordNum} previousGuesses={props.previousGuesses} />
     </>
   )
 }

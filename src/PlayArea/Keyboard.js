@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import statuses from '../statuses';
 import './Keyboard.css';
 
 //displays the interactive keyboard
@@ -7,6 +9,28 @@ const Keyboard = (props) => {
     ['a','s','d','f','g','h','j','k','l'],
     ['enter','z','x','c','v','b','n','m','del']
   ];
+
+  //maintain status of keys
+  //MOVE THIS to stateful component
+  const [keyStatuses, setKeyStatuses] = useState({});
+
+  const wordNum = props.wordNum;
+  useEffect(() => {
+    const filteredPreviousGuesses = props.previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
+
+    if(!filteredPreviousGuesses.length) {
+      setKeyStatuses({});
+    } else {
+      filteredPreviousGuesses.forEach(previousGuess => {
+        [...previousGuess.guess].forEach((letter, index) => {
+          setKeyStatuses(prevKeyStatuses => {
+            prevKeyStatuses[letter] = statuses[previousGuess.status[index]];
+            return prevKeyStatuses;
+          })
+        })
+      })
+    }
+  }, [props.previousGuesses, wordNum])
 
   const rows = keys.map((keyRow, rowIndex) => {
     return (
@@ -24,10 +48,15 @@ const Keyboard = (props) => {
             onClick = props.deleteLetter;
           }
 
+          let className = 'keyboard-key';
+          if(keyStatuses.hasOwnProperty(key)) {
+            className += ` ${keyStatuses[key]}`
+          }
+
           return (
             //build a 'keyboard-key' div for each key in the row
             <div
-              className='keyboard-key'
+              className={className}
               id={key}
               onClick={onClick}
               key={`keyboard-key-${rowIndex},${keyIndex}`}
