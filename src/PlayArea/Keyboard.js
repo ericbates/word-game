@@ -1,5 +1,4 @@
 import './Keyboard.css';
-const statuses = ['absent', 'misplaced', 'correct', 'default'];
 
 //displays the interactive keyboard
 const Keyboard = (props) => {
@@ -14,31 +13,22 @@ const Keyboard = (props) => {
       //create a 'keyboard-row' div for each row of keys (3)
       <div className='keyboard-row' key={`keyboard-row-${rowIndex}`}>
         {keyRow.map((key, keyIndex) => {
-          key = key.toUpperCase();
-          //TEMPORARY for styling purposes
-          let status = statuses[Math.floor(Math.random() * 4)];
-          if(key === 'ENTER' || key === 'DEL') {
-            status = 'default';
-          }
-
-          //set className and onClick function for each key
-          let className = 'keyboard-key';
+          //set onClick function for each key
           let onClick = (event) => {
-            const letter = event.currentTarget.getElementsByTagName('h3')[0].innerHTML;
+            const letter = event.currentTarget.id;
             props.typeLetter(letter);
           }
-          if(key === 'ENTER') {
-            className += ' ent';
+          if(key === 'enter') {
             onClick = props.submitGuess;
-          } else if(key === 'DEL') {
-            className += ' del';
+          } else if(key === 'del') {
             onClick = props.deleteLetter;
           }
 
           return (
             //build a 'keyboard-key' div for each key in the row
             <div
-              className={`${className} ${status}`}
+              className='keyboard-key'
+              id={key}
               onClick={onClick}
               key={`keyboard-key-${rowIndex},${keyIndex}`}
             >

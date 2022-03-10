@@ -4,6 +4,8 @@ import PreviousGuesses from './PreviousGuesses';
 import CurrentGuess from './CurrentGuess';
 import './PlayArea.css';
 
+const statuses = ['absent', 'misplaced', 'correct'];
+
 //The main play area
 //manages currentGuess state and adds to previousGuess state upon submit
 //parent component of PreviousGuesses, CurrentGuesses, and Keyboard
@@ -24,10 +26,22 @@ const PlayArea = (props) => {
     return status;
   }
 
+  //updates class of Keyboard keys to show status
+  const updateKeyboard = (previousGuess) => {
+    [...previousGuess.guess].forEach((letter, index) => {
+      statuses.forEach(status => {
+        if(document.getElementById(letter).classList.contains(status)) {
+          document.getElementById(letter).classList.remove(status);
+        }
+      })
+      document.getElementById(letter).classList.add(statuses[previousGuess.status[index]]);
+    })
+  }
+
   //recieves a single character and adds it to the current guess
   const typeLetter = useCallback((letter) => {
     if(currentGuess.length < guessLength) {
-      setCurrentGuess(prevCurrentGuess => prevCurrentGuess.concat(letter));
+      setCurrentGuess(prevCurrentGuess => prevCurrentGuess.concat(letter.toLowerCase()));
     }
   }, [currentGuess, guessLength])
 
@@ -42,15 +56,12 @@ const PlayArea = (props) => {
   const submitGuess = useCallback(() => {
     if(currentGuess.length === guessLength) {
       const status = validateGuess(currentGuess);
-      setPreviousGuesses(prevPreviousGuesses => {
-        return [
-          ...prevPreviousGuesses,
-          {
-            guess: currentGuess,
-            status: status
-          }
-        ]
-      })
+      const previousGuess = {
+        guess: currentGuess,
+        status: status
+      }
+      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, previousGuess]);
+      updateKeyboard(previousGuess);
       setCurrentGuess('');
     }
   }, [currentGuess, guessLength, setPreviousGuesses])
