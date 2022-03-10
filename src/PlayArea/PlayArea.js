@@ -3,8 +3,7 @@ import Keyboard from './Keyboard';
 import PreviousGuesses from './PreviousGuesses';
 import CurrentGuess from './CurrentGuess';
 import './PlayArea.css';
-
-const statuses = ['absent', 'misplaced', 'correct'];
+import statuses from '../statuses';
 
 //The main play area
 //manages currentGuess state and adds to previousGuess state upon submit

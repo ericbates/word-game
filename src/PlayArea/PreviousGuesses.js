@@ -1,7 +1,5 @@
 import React from 'react';
-
-//possible Row child component statuses
-const statuses = ['absent', 'misplaced', 'correct'];
+import statuses from '../statuses';
 
 //Renders all previous guesses for the current word
 //Each letter will have a status
