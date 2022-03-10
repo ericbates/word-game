@@ -40,7 +40,11 @@ const PlayArea = (props) => {
   //recieves a single character and adds it to the current guess
   const typeLetter = useCallback((letter) => {
     if(currentGuess.length < guessLength) {
-      setCurrentGuess(prevCurrentGuess => prevCurrentGuess.concat(letter.toLowerCase()));
+      setCurrentGuess(prevCurrentGuess => {
+        //can occasionally set currentGuess.length > guessLength when spamming letters and submits
+        //substring(0, guessLength) enforces guesses will never be larger than guessLength
+        return prevCurrentGuess.concat(letter.toLowerCase()).substring(0, guessLength);
+      })
     }
   }, [currentGuess, guessLength])
 
@@ -53,6 +57,7 @@ const PlayArea = (props) => {
 
   //submits the current guess to be added to the previousGuesses state
   const submitGuess = useCallback(() => {
+    
     if(currentGuess.length === guessLength) {
       const status = validateGuess(currentGuess);
       const previousGuess = {
