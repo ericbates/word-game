@@ -1,8 +1,8 @@
-import './KeyboardArea.css';
+import './Keyboard.css';
 const statuses = ['absent', 'misplaced', 'correct', 'default'];
 
 //displays the interactive keyboard
-const KeyboardArea = (props) => {
+const Keyboard = (props) => {
   const keys = [
     ['q','w','e','r','t','y','u','i','o','p'],
     ['a','s','d','f','g','h','j','k','l'],
@@ -23,7 +23,10 @@ const KeyboardArea = (props) => {
 
           //set className and onClick function for each key
           let className = 'keyboard-key';
-          let onClick = props.typeLetter;
+          let onClick = (event) => {
+            const letter = event.currentTarget.getElementsByTagName('h3')[0].innerHTML;
+            props.typeLetter(letter);
+          }
           if(key === 'ENTER') {
             className += ' ent';
             onClick = props.submitGuess;
@@ -54,4 +57,4 @@ const KeyboardArea = (props) => {
   )
 }
 
-export default KeyboardArea;
+export default Keyboard;

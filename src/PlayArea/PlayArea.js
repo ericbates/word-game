@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
-import KeyboardArea from './KeyboardArea/KeyboardArea';
+import Keyboard from './Keyboard';
 import PreviousGuesses from './PreviousGuesses';
 import CurrentGuess from './CurrentGuess';
 import './PlayArea.css';
 
 //The main play area
 //manages currentGuess state and adds to previousGuess state upon submit
-//parent component of PreviousGuesses, CurrentGuesses, and KeyboardArea
+//parent component of PreviousGuesses, CurrentGuesses, and Keyboard
 const PlayArea = (props) => {
   const [currentGuess, setCurrentGuess] = useState('');
 
@@ -21,13 +21,6 @@ const PlayArea = (props) => {
       setCurrentGuess(prevCurrentGuess => prevCurrentGuess.concat(letter));
     }
   }, [currentGuess, guessLength])
-
-  //finds the letter from keyboard-key div and calls typeLetter
-  const typeLetterKeyboard = useCallback((event) => {
-    const letter = event.currentTarget.getElementsByTagName('h3')[0].innerHTML;
-    typeLetter(letter);
-  }, [typeLetter])
-
 
   //removes most recently added character from the current guess
   const deleteLetter = useCallback(() => {
@@ -71,7 +64,7 @@ const PlayArea = (props) => {
           <CurrentGuess guess={currentGuess} guessLength={guessLength}/>
         </div>
       </section>
-      <KeyboardArea typeLetter={typeLetterKeyboard} deleteLetter={deleteLetter} submitGuess={submitGuess} />
+      <Keyboard typeLetter={typeLetter} deleteLetter={deleteLetter} submitGuess={submitGuess} />
     </>
   )
 }
