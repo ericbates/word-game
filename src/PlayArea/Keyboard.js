@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import statuses from '../statuses';
 import './Keyboard.css';
 
@@ -10,27 +9,16 @@ const Keyboard = (props) => {
     ['enter','z','x','c','v','b','n','m','del']
   ];
 
-  //maintain status of keys
-  //MOVE THIS to stateful component
-  const [keyStatuses, setKeyStatuses] = useState({});
+  const keyStatuses = {};
+  const filteredPreviousGuesses = props.previousGuesses.filter(previousGuess => previousGuess.wordNum === props.wordNum);
 
-  const wordNum = props.wordNum;
-  useEffect(() => {
-    const filteredPreviousGuesses = props.previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
-
-    if(!filteredPreviousGuesses.length) {
-      setKeyStatuses({});
-    } else {
-      filteredPreviousGuesses.forEach(previousGuess => {
-        [...previousGuess.guess].forEach((letter, index) => {
-          setKeyStatuses(prevKeyStatuses => {
-            prevKeyStatuses[letter] = statuses[previousGuess.status[index]];
-            return prevKeyStatuses;
-          })
-        })
+  if(filteredPreviousGuesses.length) {
+    filteredPreviousGuesses.forEach(previousGuess => {
+      [...previousGuess.guess].forEach((letter, index) => {
+          keyStatuses[letter] = statuses[previousGuess.status[index]];
       })
-    }
-  }, [props.previousGuesses, wordNum])
+    })
+  }
 
   const rows = keys.map((keyRow, rowIndex) => {
     return (

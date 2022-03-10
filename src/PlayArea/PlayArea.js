@@ -59,7 +59,6 @@ const PlayArea = (props) => {
     if(currentGuess.length === guessLength) {
       const guess = validateGuess(currentGuess);
       setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guess]);
-      //updateKeyboard(guess);
       setCurrentGuess('');
     }
   }, [currentGuess, guessLength, setPreviousGuesses, validateGuess])
@@ -82,7 +81,6 @@ const PlayArea = (props) => {
       if(previousGuess.correct) {
         setFoundAnswers(prevFoundAnswers => [...prevFoundAnswers, currentGuess]);
       }
-      //updateKeyboard(previousGuess);
       setCurrentGuess('');
     }
   }, [currentGuess, guessLength, setPreviousGuesses, setFoundAnswers, wordNum])
@@ -110,6 +108,8 @@ const PlayArea = (props) => {
     }
   }, [typeLetter, deleteLetter, submitGuess, foundAnswer])
 
+
+
   return (
     <>
       <section id='play-area'>
@@ -118,7 +118,7 @@ const PlayArea = (props) => {
           <CurrentGuess guess={currentGuess} guessLength={guessLength}/>
         </div>
       </section>
-      <Keyboard typeLetter={typeLetter} deleteLetter={deleteLetter} submitGuess={submitGuess} wordNum={wordNum} previousGuesses={props.previousGuesses} />
+      <Keyboard typeLetter={typeLetter} deleteLetter={deleteLetter} submitGuess={submitGuess} previousGuesses={props.previousGuesses} wordNum={wordNum} />
     </>
   )
 }
