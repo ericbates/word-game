@@ -8,14 +8,15 @@ import React from 'react';
 const WordGame = () => {
   //an array of previousGuess objects
   //{ guess: string representation of the guess,
-  //  status: an array representing the status of each letter of the guess }
+  //  status: an array representing the status of each letter of the guess
+  //  wordNum: an integer respresenting the word being guessed (0 - 5) 
+  //  correct: a boolean representing if the current word is the word being guessed}
   //status array can be an int of values 0, 1, or 2
   //  0 = absent (gray)
   //  1 = misplaced (yellow)
   //  2 = correct (green)
   const [previousGuesses, setPreviousGuesses] = useState([]);
   const [foundAnswers, setFoundAnswers] = useState([]);
-  //const previousGuesses = ['was', 'one', 'two', 'four', 'tear', 'blizzard'];
 
   return (
     <div className='word-game-app'>
@@ -24,7 +25,7 @@ const WordGame = () => {
       </header>
       <main>
           <ProgressArea previousGuesses={previousGuesses} foundAnswers={foundAnswers} />
-          <PlayArea previousGuesses={previousGuesses} foundAnswers={foundAnswers} setPreviousGuesses={setPreviousGuesses}/>
+          <PlayArea previousGuesses={previousGuesses} foundAnswers={foundAnswers} setPreviousGuesses={setPreviousGuesses} setFoundAnswers={setFoundAnswers}/>
       </main>
     </div>
   )

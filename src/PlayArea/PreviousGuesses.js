@@ -8,7 +8,8 @@ import statuses from '../statuses';
 //    misplaced (yellow)
 //    correct (green)
 const PreviousGuesses = (props) => {
-  const guesses = props.guesses;
+  const wordNum = props.wordNum;
+  const guesses = props.guesses.filter(guessObject => guessObject.wordNum === wordNum);
 
   const rows = guesses.map((guessObject, guessIndex) => {
     const wordArr = [...guessObject.guess];

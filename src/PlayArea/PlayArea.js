@@ -12,18 +12,30 @@ const PlayArea = (props) => {
   const [currentGuess, setCurrentGuess] = useState('');
 
   //length of current word, increases by 1 everytime a new word is found
-  const guessLength = props.foundAnswers.length + 3;
+  const wordNum = props.foundAnswers.length;
+  const guessLength = wordNum + 3;
   
   const setPreviousGuesses = props.setPreviousGuesses;
+  const setFoundAnswers = props.setFoundAnswers;
 
   //TEMPORARY DUMMY FUNCTION to fake validation
-  const validateGuess = (guess) => {
+  const validateGuess = useCallback((guess) => {
     const status = [];
+    let correct = true;
     [...guess].forEach((letter, index) => {
       status[index] = Math.floor(Math.random() * 3);
+      if(status[index] !== 2) {
+        correct = false;
+      }
     })
-    return status;
-  }
+    const guessObject = {
+      guess,
+      status,
+      wordNum,
+      correct
+    }
+    return guessObject;
+  }, [wordNum])
 
   //updates class of Keyboard keys to show status
   const updateKeyboard = (previousGuess) => {
@@ -35,6 +47,18 @@ const PlayArea = (props) => {
       })
       document.getElementById(letter).classList.add(statuses[previousGuess.status[index]]);
     })
+
+    //if guess is correct, clear keyboard statuses
+    if(previousGuess.correct) {
+      const keys = document.getElementsByClassName('keyboard-key');
+      for(let i = 0; i < keys.length; i++) {
+        statuses.forEach(status => {
+          if(keys[i].classList.contains(status)) {
+            keys[i].classList.remove(status);
+          }
+        })
+      }
+    }
   }
 
   //recieves a single character and adds it to the current guess
@@ -57,18 +81,37 @@ const PlayArea = (props) => {
 
   //submits the current guess to be added to the previousGuesses state
   const submitGuess = useCallback(() => {
-    
     if(currentGuess.length === guessLength) {
-      const status = validateGuess(currentGuess);
+      const guess = validateGuess(currentGuess);
+      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guess]);
+      updateKeyboard(guess);
+      setCurrentGuess('');
+    }
+  }, [currentGuess, guessLength, setPreviousGuesses, validateGuess])
+
+
+  //TEMPORARY DUMMY FUNCTION used to fake a correct guess
+  const foundAnswer = useCallback(() => {
+    if(currentGuess.length === guessLength) {
+      const status = [];
+      for(let i = 0; i < guessLength; i++) {
+        status[i] = 2;
+      }
       const previousGuess = {
         guess: currentGuess,
-        status: status
+        status: status,
+        wordNum: wordNum,
+        correct: true
       }
       setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, previousGuess]);
+      if(previousGuess.correct) {
+        setFoundAnswers(prevFoundAnswers => [...prevFoundAnswers, currentGuess]);
+      }
       updateKeyboard(previousGuess);
       setCurrentGuess('');
     }
-  }, [currentGuess, guessLength, setPreviousGuesses])
+  }, [currentGuess, guessLength, setPreviousGuesses, setFoundAnswers, wordNum])
+
 
   //listen for keystrokes
   useEffect(() => {
@@ -80,6 +123,9 @@ const PlayArea = (props) => {
         deleteLetter();
       } else if(event.key === 'Enter') {
         submitGuess();
+      } else if(event.key === 'Tab') {
+        //TEMPORARY, just need to fake a correct guess
+        foundAnswer();
       }
     }
 
@@ -87,13 +133,13 @@ const PlayArea = (props) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     }
-  }, [typeLetter, deleteLetter, submitGuess])
+  }, [typeLetter, deleteLetter, submitGuess, foundAnswer])
 
   return (
     <>
       <section id='play-area'>
         <div id='play-area-overflow-scroll'>
-          <PreviousGuesses guesses={props.previousGuesses} />
+          <PreviousGuesses guesses={props.previousGuesses} wordNum={wordNum}/>
           <CurrentGuess guess={currentGuess} guessLength={guessLength}/>
         </div>
       </section>
