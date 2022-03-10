@@ -12,15 +12,14 @@ const statuses = ['absent', 'misplaced', 'correct'];
 const PreviousGuesses = (props) => {
   const guesses = props.guesses;
 
-  const rows = guesses.map((guess, guessIndex) => {
-    const wordArr = [...guess];
+  const rows = guesses.map((guessObject, guessIndex) => {
+    const wordArr = [...guessObject.guess];
     const wordLength = wordArr.length;
     return (
       //build a 'word-row' div for each word
       <div className='word-row' key={`word_${wordLength}-${guessIndex}`}>
         {wordArr.map((letter, letterIndex) => {
-          //TEMPORARY for styling purposes
-          const status = statuses[Math.floor(Math.random() * 3)];
+          const status = statuses[guessObject.status[letterIndex]];
 
           return (
             //build a 'letter' div for each letter in the word

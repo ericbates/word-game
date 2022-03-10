@@ -15,6 +15,15 @@ const PlayArea = (props) => {
   
   const setPreviousGuesses = props.setPreviousGuesses;
 
+  //TEMPORARY DUMMY FUNCTION to fake validation
+  const validateGuess = (guess) => {
+    const status = [];
+    [...guess].forEach((letter, index) => {
+      status[index] = Math.floor(Math.random() * 3);
+    })
+    return status;
+  }
+
   //recieves a single character and adds it to the current guess
   const typeLetter = useCallback((letter) => {
     if(currentGuess.length < guessLength) {
@@ -32,7 +41,16 @@ const PlayArea = (props) => {
   //submits the current guess to be added to the previousGuesses state
   const submitGuess = useCallback(() => {
     if(currentGuess.length === guessLength) {
-      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, currentGuess]);
+      const status = validateGuess(currentGuess);
+      setPreviousGuesses(prevPreviousGuesses => {
+        return [
+          ...prevPreviousGuesses,
+          {
+            guess: currentGuess,
+            status: status
+          }
+        ]
+      })
       setCurrentGuess('');
     }
   }, [currentGuess, guessLength, setPreviousGuesses])
