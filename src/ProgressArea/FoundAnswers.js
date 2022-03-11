@@ -2,9 +2,10 @@
 const FoundAnswers = (props) => {
   const answers = props.answers;
 
+  //if no found answers yet, hide FoundAnswers
   let style = {};
   if(!answers.length) {
-    style = {display: 'none'}
+    style = {display: 'none'};
   }
 
   return (
@@ -13,7 +14,7 @@ const FoundAnswers = (props) => {
         return <h2 key={`answer-${index}`}>{answer.toUpperCase()}</h2>
       })}
     </div>
-  )
+  );
 }
 
 export default FoundAnswers;

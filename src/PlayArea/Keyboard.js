@@ -1,30 +1,14 @@
-//import statuses from '../statuses';
 import './Keyboard.css';
+
+const keys = [
+  ['q','w','e','r','t','y','u','i','o','p'],
+  ['a','s','d','f','g','h','j','k','l'],
+  ['enter','z','x','c','v','b','n','m','del']
+];
 
 //displays the interactive keyboard
 const Keyboard = (props) => {
-  const keys = [
-    ['q','w','e','r','t','y','u','i','o','p'],
-    ['a','s','d','f','g','h','j','k','l'],
-    ['enter','z','x','c','v','b','n','m','del']
-  ];
-
   const keyStatuses = props.keyStatuses;
-  /*
-  const keyStatuses = {};
-  const filteredPreviousGuesses = props.previousGuesses.filter(previousGuess => previousGuess.wordNum === props.wordNum);
-
-  if(filteredPreviousGuesses.length) {
-    filteredPreviousGuesses.forEach(previousGuess => {
-      [...previousGuess.guess].forEach((letter, index) => {
-          keyStatuses[letter] = statuses[previousGuess.status[index]];
-      })
-    })
-  }
-  */
-
-  console.log("Keyboard");
-  //console.log(keyStatuses);
  
   const rows = keys.map((keyRow, rowIndex) => {
     return (
@@ -43,8 +27,9 @@ const Keyboard = (props) => {
           }
 
           let className = 'keyboard-key';
+          //update className to reflect status of each key
           if(keyStatuses.hasOwnProperty(key)) {
-            className += ` ${keyStatuses[key]}`
+            className += ` ${keyStatuses[key]}`;
           }
 
           return (
@@ -57,16 +42,18 @@ const Keyboard = (props) => {
             >
               <h3>{key.toUpperCase()}</h3>
             </div>
-          )
+          );
         })}
       </div>
-    )
-  })
+    );
+  });
+
+
   return (
     <section id='keyboard-area'>
       {rows}
     </section>
-  )
+  );
 }
 
 export default Keyboard;

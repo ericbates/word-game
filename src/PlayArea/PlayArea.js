@@ -5,43 +5,25 @@ import CurrentGuess from './CurrentGuess';
 import './PlayArea.css';
 import statuses from '../statuses';
 
-//The main play area
-//manages currentGuess state and adds to previousGuess state upon submit
+//The main interactive area of the app
+//manages currentGuess and keyStatuses state
+//updates previousGuess state upon submit
 //parent component of PreviousGuesses, CurrentGuesses, and Keyboard
 const PlayArea = (props) => {
-  console.log("PLAYAREA");
   const [currentGuess, setCurrentGuess] = useState('');
-
-  //length of current word, increases by 1 everytime a new word is found
-  const wordNum = props.foundAnswers.length;
-  const guessLength = wordNum + 3;
-  
-  const setPreviousGuesses = props.setPreviousGuesses;
-  const setFoundAnswers = props.setFoundAnswers;
-
   const [keyStatuses, setKeyStatuses] = useState({});
 
-  //console.log(props.previousGuesses);
-  //console.log(wordNum);
-  //console.log(keyStatuses);
-  useEffect(() => {
-    console.log('updatekeyboard start');
-    const filteredPreviousGuesses = props.previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
+  //the passed in props
+  const previousGuesses = props.previousGuesses;
+  const setPreviousGuesses = props.setPreviousGuesses;
+  const foundAnswers = props.foundAnswers;
+  const setFoundAnswers = props.setFoundAnswers;
 
-    if(!filteredPreviousGuesses.length) {
-      setKeyStatuses({});
-    } else {
-      const keyStatusesCopy = {...keyStatuses};
-      filteredPreviousGuesses.forEach(previousGuess => {
-        [...previousGuess.guess].forEach((letter, index) => {
-          keyStatusesCopy[letter] = statuses[previousGuess.status[index]];
-        })
-      })
-      setKeyStatuses(keyStatusesCopy);
-    }
+  //wordNum: index of the current word being guessed
+  //wordLength: the length of the current word being guessed
+  const wordNum = foundAnswers.length;
+  const wordLength = wordNum + 3;
 
-    console.log('updatekeyboard end');
-  }, [props.previousGuesses, wordNum])
 
   //TEMPORARY DUMMY FUNCTION to fake validation
   const validateGuess = useCallback((guess) => {
@@ -52,49 +34,21 @@ const PlayArea = (props) => {
       if(status[index] !== 2) {
         correct = false;
       }
-    })
+    });
     const guessObject = {
       guess,
       status,
       wordNum,
       correct
-    }
+    };
     return guessObject;
-  }, [wordNum])
-
-  //recieves a single character and adds it to the current guess
-  const typeLetter = useCallback((letter) => {
-    if(currentGuess.length < guessLength) {
-      setCurrentGuess(prevCurrentGuess => {
-        //can occasionally set currentGuess.length > guessLength when spamming letters and submits
-        //substring(0, guessLength) enforces guesses will never be larger than guessLength
-        return prevCurrentGuess.concat(letter.toLowerCase()).substring(0, guessLength);
-      })
-    }
-  }, [currentGuess, guessLength])
-
-  //removes most recently added character from the current guess
-  const deleteLetter = useCallback(() => {
-    if(currentGuess.length > 0) {
-      setCurrentGuess(prevCurrentGuess => prevCurrentGuess.substring(0, prevCurrentGuess.length - 1));
-    }
-  }, [currentGuess])
-
-  //submits the current guess to be added to the previousGuesses state
-  const submitGuess = useCallback(() => {
-    if(currentGuess.length === guessLength) {
-      const guess = validateGuess(currentGuess);
-      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guess]);
-      setCurrentGuess('');
-    }
-  }, [currentGuess, guessLength, setPreviousGuesses, validateGuess])
-
+  }, [wordNum]);
 
   //TEMPORARY DUMMY FUNCTION used to fake a correct guess
   const foundAnswer = useCallback(() => {
-    if(currentGuess.length === guessLength) {
+    if(currentGuess.length === wordLength) {
       const status = [];
-      for(let i = 0; i < guessLength; i++) {
+      for(let i = 0; i < wordLength; i++) {
         status[i] = 2;
       }
       const previousGuess = {
@@ -102,14 +56,41 @@ const PlayArea = (props) => {
         status: status,
         wordNum: wordNum,
         correct: true
-      }
+      };
       setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, previousGuess]);
       if(previousGuess.correct) {
         setFoundAnswers(prevFoundAnswers => [...prevFoundAnswers, currentGuess]);
       }
       setCurrentGuess('');
     }
-  }, [currentGuess, guessLength, setPreviousGuesses, setFoundAnswers, wordNum])
+  }, [currentGuess, wordLength, setPreviousGuesses, setFoundAnswers, wordNum]);
+
+  //recieves a single character and adds it to the current guess
+  const typeLetter = useCallback((letter) => {
+    if(currentGuess.length < wordLength) {
+      setCurrentGuess(prevCurrentGuess => {
+        //can occasionally set currentGuess.length > wordLength when spamming letters and submits
+        //substring(0, wordLength) enforces guesses will never be larger than wordLength
+        return prevCurrentGuess.concat(letter.toLowerCase()).substring(0, wordLength);
+      });
+    }
+  }, [currentGuess, wordLength]);
+
+  //removes most recently added character from the current guess
+  const deleteLetter = useCallback(() => {
+    if(currentGuess.length > 0) {
+      setCurrentGuess(prevCurrentGuess => prevCurrentGuess.substring(0, prevCurrentGuess.length - 1));
+    }
+  }, [currentGuess]);
+
+  //submits the current guess to be added to the previousGuesses state
+  const submitGuess = useCallback(() => {
+    if(currentGuess.length === wordLength) {
+      const guess = validateGuess(currentGuess);
+      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guess]);
+      setCurrentGuess('');
+    }
+  }, [currentGuess, wordLength, setPreviousGuesses, validateGuess]);
 
 
   //listen for keystrokes
@@ -132,21 +113,49 @@ const PlayArea = (props) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     }
-  }, [typeLetter, deleteLetter, submitGuess, foundAnswer])
+  }, [typeLetter, deleteLetter, submitGuess, foundAnswer]);
 
+  //when previousGuesses changes, update keyStatuses
+  useEffect(() => {
+    //only interested in previousGuesses for the current word being guessed
+    const filteredPreviousGuesses = previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
+
+    //reset keyStatuses if onto next word
+    if(!filteredPreviousGuesses.length) {
+      setKeyStatuses({});
+    } else {
+      const newKeyStatuses = {};
+      filteredPreviousGuesses.forEach(previousGuess => {
+        [...previousGuess.guess].forEach((letter, index) => {
+          newKeyStatuses[letter] = statuses[previousGuess.status[index]];
+        });
+      });
+      setKeyStatuses(previousKeyStatuses => {
+        Object.keys(newKeyStatuses).forEach(letter => {
+          previousKeyStatuses[letter] = newKeyStatuses[letter];
+        });
+        return {...previousKeyStatuses};
+      });
+    }
+  }, [previousGuesses, wordNum]);
 
 
   return (
     <>
       <section id='play-area'>
         <div id='play-area-overflow-scroll'>
-          <PreviousGuesses guesses={props.previousGuesses} wordNum={wordNum}/>
-          <CurrentGuess guess={currentGuess} guessLength={guessLength}/>
+          <PreviousGuesses previousGuesses={previousGuesses} wordNum={wordNum}/>
+          <CurrentGuess currentGuess={currentGuess} wordLength={wordLength}/>
         </div>
       </section>
-      <Keyboard typeLetter={typeLetter} deleteLetter={deleteLetter} submitGuess={submitGuess} keyStatuses={keyStatuses} />
+      <Keyboard
+        typeLetter={typeLetter}
+        deleteLetter={deleteLetter}
+        submitGuess={submitGuess}
+        keyStatuses={keyStatuses}
+      />
     </>
-  )
+  );
 }
 
 export default PlayArea;

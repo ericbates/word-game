@@ -1,21 +1,20 @@
 //Renders the active input row
 const CurrentGuess = (props) => {
-  //TEMPORARY DUMMY DATA
-  const guessLength = props.guessLength;
-  const guess = props.guess;
+  const currentGuess = props.currentGuess;
+  const wordLength = props.wordLength;
 
   const letters = [];
-  for(let i = 0; i < guessLength; i++) {
-    if(i < guess.length) {
+  for(let i = 0; i < wordLength; i++) {
+    if(i < currentGuess.length) {
       letters.push(
         <div className='letter' key={`current-guess_${i}`}>
-          <h1>{guess.charAt(i).toUpperCase()}</h1>
+          <h1>{currentGuess.charAt(i).toUpperCase()}</h1>
         </div>
-      )
+      );
     } else {
       letters.push(
         <div className='letter empty' key={`current-guess_${i}`}></div>
-      )
+      );
     }
   }
 
@@ -25,7 +24,7 @@ const CurrentGuess = (props) => {
         {letters}
       </div>
     </div>
-  )
+  );
 }
 
 export default CurrentGuess;

@@ -4,19 +4,17 @@ import ProgressIcons from './ProgressIcons';
 import './ProgressArea.css';
 
 const ProgressArea = (props) => {
-  const totalGuesses = 20;
   const numGuesses = props.previousGuesses.length;
-
 
   return (
     <section id='progress-area'>
       <div id='progress-area-overflow-scroll'>
-        <GuessStats numGuesses={numGuesses} totalGuesses={totalGuesses} />
+        <GuessStats numGuesses={numGuesses} maxGuesses={props.maxGuesses} />
         <FoundAnswers answers={props.foundAnswers} />
         <ProgressIcons previousGuesses={props.previousGuesses} />
       </div>
     </section>
-  )
+  );
 }
 
 export default ProgressArea;
