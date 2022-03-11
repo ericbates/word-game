@@ -3,11 +3,13 @@ import Keyboard from './Keyboard';
 import PreviousGuesses from './PreviousGuesses';
 import CurrentGuess from './CurrentGuess';
 import './PlayArea.css';
+import statuses from '../statuses';
 
 //The main play area
 //manages currentGuess state and adds to previousGuess state upon submit
 //parent component of PreviousGuesses, CurrentGuesses, and Keyboard
 const PlayArea = (props) => {
+  console.log("PLAYAREA");
   const [currentGuess, setCurrentGuess] = useState('');
 
   //length of current word, increases by 1 everytime a new word is found
@@ -16,6 +18,30 @@ const PlayArea = (props) => {
   
   const setPreviousGuesses = props.setPreviousGuesses;
   const setFoundAnswers = props.setFoundAnswers;
+
+  const [keyStatuses, setKeyStatuses] = useState({});
+
+  //console.log(props.previousGuesses);
+  //console.log(wordNum);
+  //console.log(keyStatuses);
+  useEffect(() => {
+    console.log('updatekeyboard start');
+    const filteredPreviousGuesses = props.previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
+
+    if(!filteredPreviousGuesses.length) {
+      setKeyStatuses({});
+    } else {
+      const keyStatusesCopy = {...keyStatuses};
+      filteredPreviousGuesses.forEach(previousGuess => {
+        [...previousGuess.guess].forEach((letter, index) => {
+          keyStatusesCopy[letter] = statuses[previousGuess.status[index]];
+        })
+      })
+      setKeyStatuses(keyStatusesCopy);
+    }
+
+    console.log('updatekeyboard end');
+  }, [props.previousGuesses, wordNum])
 
   //TEMPORARY DUMMY FUNCTION to fake validation
   const validateGuess = useCallback((guess) => {
@@ -118,7 +144,7 @@ const PlayArea = (props) => {
           <CurrentGuess guess={currentGuess} guessLength={guessLength}/>
         </div>
       </section>
-      <Keyboard typeLetter={typeLetter} deleteLetter={deleteLetter} submitGuess={submitGuess} previousGuesses={props.previousGuesses} wordNum={wordNum} />
+      <Keyboard typeLetter={typeLetter} deleteLetter={deleteLetter} submitGuess={submitGuess} keyStatuses={keyStatuses} />
     </>
   )
 }

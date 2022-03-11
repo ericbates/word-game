@@ -5,6 +5,6 @@ import WordGame from './WordGame';
 ReactDOM.render(
   <React.StrictMode>
     <WordGame />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
+  ,document.getElementById('root')
 );

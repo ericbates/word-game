@@ -15,6 +15,7 @@ const WordGame = () => {
   //  0 = absent (gray)
   //  1 = misplaced (yellow)
   //  2 = correct (green)
+  console.log("WORDGAME");
   const [previousGuesses, setPreviousGuesses] = useState([]);
   const [foundAnswers, setFoundAnswers] = useState([]);
 

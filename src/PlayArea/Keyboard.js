@@ -1,4 +1,4 @@
-import statuses from '../statuses';
+//import statuses from '../statuses';
 import './Keyboard.css';
 
 //displays the interactive keyboard
@@ -9,6 +9,8 @@ const Keyboard = (props) => {
     ['enter','z','x','c','v','b','n','m','del']
   ];
 
+  const keyStatuses = props.keyStatuses;
+  /*
   const keyStatuses = {};
   const filteredPreviousGuesses = props.previousGuesses.filter(previousGuess => previousGuess.wordNum === props.wordNum);
 
@@ -19,7 +21,11 @@ const Keyboard = (props) => {
       })
     })
   }
+  */
 
+  console.log("Keyboard");
+  //console.log(keyStatuses);
+ 
   const rows = keys.map((keyRow, rowIndex) => {
     return (
       //create a 'keyboard-row' div for each row of keys (3)
@@ -56,7 +62,6 @@ const Keyboard = (props) => {
       </div>
     )
   })
-
   return (
     <section id='keyboard-area'>
       {rows}
