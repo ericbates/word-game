@@ -20,7 +20,7 @@ const CurrentGuess = (props) => {
 
   return (
     <div id='current-guess'>
-      <div className='word-row'>
+      <div className={props.wordRowClassName}>
         {letters}
       </div>
     </div>

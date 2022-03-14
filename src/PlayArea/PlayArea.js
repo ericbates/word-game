@@ -144,15 +144,40 @@ const PlayArea = (props) => {
 
   //when previousGuesses changes, scroll to the bottom of the play-area
   useEffect(() => {
-    bottomOfPlayAreaRef.current.scrollIntoView({ behavior: "smooth" });
+    bottomOfPlayAreaRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [previousGuesses, wordNum]);
+
+  //assign a className to word-row for styling dependent on wordNum
+  let wordRowClassName = 'word-row';
+  switch(wordNum) {
+    case 0:
+      wordRowClassName += ' first';
+      break;
+    case 1:
+      wordRowClassName += ' second';
+      break;
+    case 2:
+      wordRowClassName += ' third';
+      break;
+    case 3:
+      wordRowClassName += ' fourth';
+      break;
+    case 4:
+      wordRowClassName += ' fifth';
+      break;
+    case 5:
+      wordRowClassName += ' sixth';
+      break;
+    default: 
+      break;
+  }
 
   return (
     <>
       <section id='play-area'>
         <div id='play-area-overflow-scroll'>
-          <PreviousGuesses previousGuesses={previousGuesses} wordNum={wordNum}/>
-          <CurrentGuess currentGuess={currentGuess} wordLength={wordLength}/>
+          <PreviousGuesses previousGuesses={previousGuesses} wordNum={wordNum} wordRowClassName={wordRowClassName} />
+          <CurrentGuess currentGuess={currentGuess} wordLength={wordLength} wordRowClassName={wordRowClassName} />
           <div ref={bottomOfPlayAreaRef} />
         </div>
       </section>

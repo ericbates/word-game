@@ -14,7 +14,7 @@ const PreviousGuesses = (props) => {
     const guessLength = guessArr.length;
     return (
       //build a 'word-row' div for each word
-      <div className='word-row' key={`word_${guessLength}-${guessIndex}`}>
+      <div className={props.wordRowClassName} key={`word_${guessLength}-${guessIndex}`}>
         {guessArr.map((letter, letterIndex) => {
           const status = statuses[guessObject.status[letterIndex]];
 
