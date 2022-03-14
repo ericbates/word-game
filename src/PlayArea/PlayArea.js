@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Keyboard from './Keyboard';
 import PreviousGuesses from './PreviousGuesses';
 import CurrentGuess from './CurrentGuess';
@@ -23,6 +23,9 @@ const PlayArea = (props) => {
   //wordLength: the length of the current word being guessed
   const wordNum = foundAnswers.length;
   const wordLength = wordNum + 3;
+
+  //ref to automatically scroll when guesses fill PlayArea
+  const bottomOfPlayAreaRef = useRef(null);
 
 
   //TEMPORARY DUMMY FUNCTION to fake validation
@@ -139,6 +142,10 @@ const PlayArea = (props) => {
     }
   }, [previousGuesses, wordNum]);
 
+  //when previousGuesses changes, scroll to the bottom of the play-area
+  useEffect(() => {
+    bottomOfPlayAreaRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [previousGuesses, wordNum]);
 
   return (
     <>
@@ -146,6 +153,7 @@ const PlayArea = (props) => {
         <div id='play-area-overflow-scroll'>
           <PreviousGuesses previousGuesses={previousGuesses} wordNum={wordNum}/>
           <CurrentGuess currentGuess={currentGuess} wordLength={wordLength}/>
+          <div ref={bottomOfPlayAreaRef} />
         </div>
       </section>
       <Keyboard
