@@ -1,4 +1,4 @@
-import statuses from '../statuses';
+import { statuses } from '../utils';
 
 //Render multiple rows of ProgressIcons
 const ProgressIcons = (props) => {

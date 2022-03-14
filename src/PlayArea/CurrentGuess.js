@@ -1,7 +1,12 @@
+import { assignWordRowClassName } from '../utils';
+
 //Renders the active input row
 const CurrentGuess = (props) => {
   const currentGuess = props.currentGuess;
   const wordLength = props.wordLength;
+  const wordNum = props.wordNum;
+
+  const wordRowClassName = assignWordRowClassName(wordNum);
 
   const letters = [];
   for(let i = 0; i < wordLength; i++) {
@@ -20,7 +25,7 @@ const CurrentGuess = (props) => {
 
   return (
     <div id='current-guess'>
-      <div className={props.wordRowClassName}>
+      <div className={wordRowClassName}>
         {letters}
       </div>
     </div>
