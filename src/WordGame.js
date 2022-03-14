@@ -6,6 +6,7 @@ import './css/colors.css';
 import React from 'react';
 
 const maxGuesses = 20;
+const totalWords = 6;
 
 const WordGame = () => {
   //an array of previousGuess objects
@@ -31,6 +32,7 @@ const WordGame = () => {
           <ProgressArea
             previousGuesses={previousGuesses}
             maxGuesses={maxGuesses}
+            totalWords={totalWords}
             foundAnswers={foundAnswers}
           />
           <PlayArea

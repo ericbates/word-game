@@ -1,8 +1,8 @@
 :root {
-  --absent: rgb(100, 100, 100);
-  --misplaced: rgb(252, 195, 72);
-  --correct: rgb(102, 148, 77);
-  --empty: rgb(201, 201, 201) ;
+  --grey: rgb(100, 100, 100);
+  --yellow: rgb(252, 195, 72);
+  --green: rgb(102, 148, 77);
+  --light-grey: rgb(201, 201, 201) ;
   --red: rgb(180, 0, 0);
 }
 
@@ -11,34 +11,34 @@
 }
 
 .absent {
-  background-color: var(--absent) !important;
-  border-color: var(--absent) !important;
+  background-color: var(--grey) !important;
+  border-color: var(--grey) !important;
 }
 
 .misplaced {
-  background-color: var(--misplaced) !important;
-  border-color: var(--misplaced) !important;
+  background-color: var(--yellow) !important;
+  border-color: var(--yellow) !important;
 }
 
 .correct {
-  background-color: var(--correct) !important;
-  border-color: var(--correct) !important;
+  background-color: var(--green) !important;
+  border-color: var(--green) !important;
 }
 
 .empty {
-  border-color: var(--empty) !important;
+  border-color: var(--light-grey) !important;
 }
 
 .grey {
-  color: var(--absent);
+  color: var(--grey);
 }
 
 .yellow {
-  color: var(--misplaced);
+  color: var(--yellow);
 }
 
 .green {
-  color: var(--correct);
+  color: var(--green);
 }
 
 .low-guesses {
