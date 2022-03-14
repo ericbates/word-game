@@ -1,6 +1,7 @@
 import GuessStats from './GuessStats';
 import FoundAnswers from './FoundAnswers';
 import ProgressIcons from './ProgressIcons';
+import Instructions from './Instructions';
 import './ProgressArea.css';
 
 const ProgressArea = (props) => {
@@ -11,7 +12,10 @@ const ProgressArea = (props) => {
       <div id='progress-area-overflow-scroll'>
         <GuessStats numGuesses={numGuesses} maxGuesses={props.maxGuesses} />
         <FoundAnswers answers={props.foundAnswers} />
-        <ProgressIcons previousGuesses={props.previousGuesses} />
+        {numGuesses > 0
+          ? <ProgressIcons previousGuesses={props.previousGuesses} />
+          : <Instructions maxGuesses={props.maxGuesses} />
+        }
       </div>
     </section>
   );

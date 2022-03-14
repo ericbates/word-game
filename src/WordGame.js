@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ProgressArea from './ProgressArea/ProgressArea';
 import PlayArea from './PlayArea/PlayArea';
 import './css/WordGame.css';
-import './css/StatusColors.css';
+import './css/colors.css';
 import React from 'react';
 
 const maxGuesses = 20;

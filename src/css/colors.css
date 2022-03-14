@@ -1,0 +1,46 @@
+:root {
+  --absent: rgb(100, 100, 100);
+  --misplaced: rgb(252, 195, 72);
+  --correct: rgb(102, 148, 77);
+  --empty: rgb(201, 201, 201) ;
+  --red: rgb(180, 0, 0);
+}
+
+.absent, .misplaced, .correct {
+  color: white !important;
+}
+
+.absent {
+  background-color: var(--absent) !important;
+  border-color: var(--absent) !important;
+}
+
+.misplaced {
+  background-color: var(--misplaced) !important;
+  border-color: var(--misplaced) !important;
+}
+
+.correct {
+  background-color: var(--correct) !important;
+  border-color: var(--correct) !important;
+}
+
+.empty {
+  border-color: var(--empty) !important;
+}
+
+.grey {
+  color: var(--absent);
+}
+
+.yellow {
+  color: var(--misplaced);
+}
+
+.green {
+  color: var(--correct);
+}
+
+.low-guesses {
+  color: var(--red);
+}
