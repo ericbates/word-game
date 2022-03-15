@@ -5,8 +5,8 @@ import CurrentGuess from './CurrentGuess';
 import '../css/PlayArea.css';
 
 //The main interactive area of the app
-//manages currentGuess and keyStatuses state
-//updates previousGuess state upon submit
+//manages currentGuess state
+//updates previousGuess state upon currentGuess submit
 //parent component of PreviousGuesses, CurrentGuesses, and Keyboard
 const PlayArea = (props) => {
   const [currentGuess, setCurrentGuess] = useState('');
@@ -83,8 +83,7 @@ const PlayArea = (props) => {
   //submits the current guess to be added to the previousGuesses state
   const submitGuess = useCallback(() => {
     if(currentGuess.length === wordLength) {
-      const guess = validateGuess(currentGuess);
-      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guess]);
+      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, validateGuess(currentGuess)]);
       setCurrentGuess('');
     }
   }, [currentGuess, wordLength, setPreviousGuesses, validateGuess]);
