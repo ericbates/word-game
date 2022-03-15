@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Keyboard from './Keyboard';
 import PreviousGuesses from './PreviousGuesses';
 import CurrentGuess from './CurrentGuess';
-import './PlayArea.css';
+import '../css/PlayArea.css';
 import { statuses } from '../utils';
 
 //The main interactive area of the app

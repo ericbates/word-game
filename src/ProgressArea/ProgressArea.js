@@ -2,7 +2,7 @@ import GuessStats from './GuessStats';
 import FoundAnswers from './FoundAnswers';
 import ProgressIcons from './ProgressIcons';
 import Instructions from './Instructions';
-import './ProgressArea.css';
+import '../css/ProgressArea.css';
 
 const ProgressArea = (props) => {
   const numGuesses = props.previousGuesses.length;

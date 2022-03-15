@@ -1,4 +1,4 @@
-import './Keyboard.css';
+import '../css/Keyboard.css';
 
 const keys = [
   ['q','w','e','r','t','y','u','i','o','p'],
