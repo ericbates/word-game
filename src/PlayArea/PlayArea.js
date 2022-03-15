@@ -19,7 +19,7 @@ const PlayArea = (props) => {
   //wordNum: index of the current word being guessed
   //wordLength: the length of the current word being guessed
   const wordNum = foundAnswers.length;
-  const wordLength = wordNum + 3;
+  const wordLength = wordNum + props.startingWordLength;
 
   //ref to automatically scroll when guesses fill PlayArea
   const bottomOfPlayAreaRef = useRef(null);

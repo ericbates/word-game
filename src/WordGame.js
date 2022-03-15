@@ -7,6 +7,7 @@ import React from 'react';
 
 const maxGuesses = 20;
 const totalWords = 6;
+const startingWordLength = 3;
 
 const WordGame = () => {
   //an array of previousGuess objects
@@ -17,7 +18,7 @@ const WordGame = () => {
   //  correct: a boolean representing if the current word is the word being guessed
   //}
   //status array can be an int of values 0, 1, or 2
-  //  0 = absent (gray)
+  //  0 = absent (grey)
   //  1 = misplaced (yellow)
   //  2 = correct (green)
   const [previousGuesses, setPreviousGuesses] = useState([]);
@@ -40,6 +41,7 @@ const WordGame = () => {
             previousGuesses={previousGuesses}
             setPreviousGuesses={setPreviousGuesses}
             foundAnswers={foundAnswers}
+            startingWordLength={startingWordLength}
           />
       </main>
     </div>
