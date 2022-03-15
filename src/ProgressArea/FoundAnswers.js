@@ -3,7 +3,7 @@ const FoundAnswers = (props) => {
   const foundAnswers = props.foundAnswers;
 
   //if no found answers yet, hide FoundAnswers
-  const style = !foundAnswers.length ? {visibility: 'hidden', padding: '0px'} : {};
+  const style = !foundAnswers.length ? {visibility: 'hidden', padding: '0px', margin: '0px'} : {};
 
   return (
     <div id='found-answers' style={style}>

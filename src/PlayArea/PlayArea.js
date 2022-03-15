@@ -11,7 +11,6 @@ import '../css/PlayArea.css';
 const PlayArea = (props) => {
   const [currentGuess, setCurrentGuess] = useState('');
 
-  //the passed in props
   const previousGuesses = props.previousGuesses;
   const setPreviousGuesses = props.setPreviousGuesses;
   const foundAnswers = props.foundAnswers;
@@ -113,7 +112,9 @@ const PlayArea = (props) => {
 
   //when previousGuesses changes, scroll to the bottom of the play-area
   useEffect(() => {
-    bottomOfPlayAreaRef.current.scrollIntoView({ behavior: 'smooth' });
+    bottomOfPlayAreaRef.current.scrollIntoView();
+    //scrollIntoView({ behavior: 'smooth' }) appears to be broken in Chrome
+    //produces inconsistent results, removed for now
   }, [previousGuesses, wordNum]);
 
   return (

@@ -9,6 +9,9 @@ const keys = [
 
 //displays the interactive keyboard
 const Keyboard = (props) => {
+  const typeLetter = props.typeLetter;
+  const deleteLetter = props.deleteLetter;
+  const submitGuess = props.submitGuess;
   const previousGuesses = props.previousGuesses;
   const wordNum = props.wordNum;
 
@@ -29,12 +32,12 @@ const Keyboard = (props) => {
           //set onClick function for each key
           let onClick = (event) => {
             const letter = event.currentTarget.id;
-            props.typeLetter(letter);
+            typeLetter(letter);
           }
           if(key === 'enter') {
-            onClick = props.submitGuess;
+            onClick = submitGuess;
           } else if(key === 'del') {
-            onClick = props.deleteLetter;
+            onClick = deleteLetter;
           }
 
           let className = 'keyboard-key';

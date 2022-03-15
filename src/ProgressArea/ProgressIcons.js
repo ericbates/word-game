@@ -3,6 +3,7 @@ import { statuses } from '../utils';
 //Render multiple rows of ProgressIcons
 const ProgressIcons = (props) => {
   const previousGuesses = props.previousGuesses;
+  const bottomOfProgressIconsRef = props.bottomOfProgressIconsRef;
 
   const rows = previousGuesses.map((guess, guessIndex) => {
     return (
@@ -25,6 +26,7 @@ const ProgressIcons = (props) => {
     <div id='progress-icons'>
       <div id='progress-icons-overflow-scroll'>
         {rows}
+        <div ref={bottomOfProgressIconsRef} />
       </div>
     </div>
   );
