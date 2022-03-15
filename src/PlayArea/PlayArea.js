@@ -115,7 +115,7 @@ const PlayArea = (props) => {
     bottomOfPlayAreaRef.current.scrollIntoView();
     //scrollIntoView({ behavior: 'smooth' }) appears to be broken in Chrome
     //produces inconsistent results, removed for now
-  }, [previousGuesses, wordNum]);
+  }, [previousGuesses]);
 
   return (
     <>
