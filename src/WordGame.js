@@ -3,8 +3,8 @@ import ProgressArea from './ProgressArea/ProgressArea';
 import PlayArea from './PlayArea/PlayArea';
 import './css/WordGame.css';
 import './css/colors.css';
-import React from 'react';
 
+const title = 'Word Game';
 const maxGuesses = 20;
 const totalWords = 6;
 const startingWordLength = 3;
@@ -28,7 +28,7 @@ const WordGame = () => {
   return (
     <div className='word-game-app'>
       <header>
-        <h1>Word Game</h1>
+        <h1>{title}</h1>
       </header>
       <main>
           <ProgressArea
@@ -36,6 +36,7 @@ const WordGame = () => {
             maxGuesses={maxGuesses}
             totalWords={totalWords}
             foundAnswers={foundAnswers}
+            title={title}
           />
           <PlayArea
             previousGuesses={previousGuesses}

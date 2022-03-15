@@ -15,7 +15,7 @@ const ProgressArea = (props) => {
         { /* display Instructions when no guesses, replace Instructions with ProgressIcons after first guess */
           numGuesses > 0
           ? <ProgressIcons previousGuesses={props.previousGuesses} />
-          : <Instructions maxGuesses={props.maxGuesses} totalWords={props.totalWords} />
+          : <Instructions maxGuesses={props.maxGuesses} totalWords={props.totalWords} title={props.title} />
         }
       </div>
     </section>
