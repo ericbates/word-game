@@ -58,7 +58,6 @@ main {
   grid-area: progress;
   border-right: 1px solid rgb(201, 201, 201);
   box-sizing: border-box;
-  position: relative;
 }
 
 #play-area {
@@ -66,7 +65,7 @@ main {
   position: relative;
 }
 
-#progress-area-overflow-scroll, #play-area-overflow-scroll{
+#play-area-overflow-scroll{
   position: absolute;
   left: 0;
   right: 0;

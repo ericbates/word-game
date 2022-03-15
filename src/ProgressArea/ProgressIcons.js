@@ -23,7 +23,9 @@ const ProgressIcons = (props) => {
 
   return (
     <div id='progress-icons'>
-      {rows}
+      <div id='progress-icons-overflow-scroll'>
+        {rows}
+      </div>
     </div>
   );
 } 

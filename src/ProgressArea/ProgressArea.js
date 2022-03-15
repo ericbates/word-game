@@ -9,7 +9,6 @@ const ProgressArea = (props) => {
 
   return (
     <section id='progress-area'>
-      <div id='progress-area-overflow-scroll'>
         <GuessStats numGuesses={numGuesses} maxGuesses={props.maxGuesses} />
         <FoundAnswers foundAnswers={props.foundAnswers} />
         { /* display Instructions when no guesses, replace Instructions with ProgressIcons after first guess */
@@ -17,7 +16,6 @@ const ProgressArea = (props) => {
           ? <ProgressIcons previousGuesses={props.previousGuesses} />
           : <Instructions maxGuesses={props.maxGuesses} totalWords={props.totalWords} title={props.title} />
         }
-      </div>
     </section>
   );
 }
