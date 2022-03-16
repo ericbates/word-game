@@ -1,17 +1,11 @@
-import { useEffect, useRef } from 'react';
+import {useEffect, useRef} from 'react';
 import GuessStats from './GuessStats';
 import FoundAnswers from './FoundAnswers';
 import ProgressIcons from './ProgressIcons';
 import Instructions from './Instructions';
 import '../css/ProgressArea.css';
 
-const ProgressArea = (props) => {
-  const previousGuesses = props.previousGuesses;
-  const foundAnswers = props.foundAnswers;
-  const maxGuesses = props.maxGuesses;
-  const totalWords = props.totalWords;
-  const title = props.title;
-
+const ProgressArea = ({previousGuesses, foundAnswers, maxGuesses, totalWords, title}) => {
   const numGuesses = previousGuesses.length;
 
   //ref to automatically scroll when progress icons fill ProgressIcons area

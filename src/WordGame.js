@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import ProgressArea from './ProgressArea/ProgressArea';
 import PlayArea from './PlayArea/PlayArea';
 import './css/WordGame.css';

@@ -1,12 +1,9 @@
 import React from 'react';
-import { statuses, assignWordRowClassName } from '../utils';
+import {statuses, assignWordRowClassName} from '../utils';
 
 //Renders all previous guesses for the current word
 //Each letter will have a status
-const PreviousGuesses = (props) => {
-  const previousGuesses = props.previousGuesses;
-  const wordNum = props.wordNum;
-  
+const PreviousGuesses = ({previousGuesses, wordNum}) => {
   const wordRowClassName = assignWordRowClassName(wordNum);
 
   //only interested in previousGuesses for the current word being guessed

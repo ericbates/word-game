@@ -1,8 +1,4 @@
-const Instructions = (props) => {
-  const maxGuesses = props.maxGuesses;
-  const totalWords = props.totalWords;
-  const title = props.title;
-
+const Instructions = ({maxGuesses, totalWords, title}) => {
   return (
     <div id="instructions">
       <p><strong>Welcome to {title}!</strong></p>

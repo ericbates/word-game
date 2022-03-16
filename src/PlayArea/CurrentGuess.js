@@ -1,11 +1,7 @@
-import { assignWordRowClassName } from '../utils';
+import {assignWordRowClassName} from '../utils';
 
 //Renders the active input row
-const CurrentGuess = (props) => {
-  const currentGuess = props.currentGuess;
-  const wordLength = props.wordLength;
-  const wordNum = props.wordNum;
-
+const CurrentGuess = ({currentGuess, wordLength, wordNum}) => {
   const wordRowClassName = assignWordRowClassName(wordNum);
 
   const letters = [];

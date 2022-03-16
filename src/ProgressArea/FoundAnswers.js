@@ -1,7 +1,5 @@
 //Render all found answers
-const FoundAnswers = (props) => {
-  const foundAnswers = props.foundAnswers;
-
+const FoundAnswers = ({foundAnswers}) => {
   //if no found answers yet, hide FoundAnswers
   const style = !foundAnswers.length ? {visibility: 'hidden', padding: '0px', margin: '0px'} : {};
 

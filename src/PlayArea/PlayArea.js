@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import {useState, useEffect, useCallback, useRef} from 'react';
 import Keyboard from './Keyboard';
 import PreviousGuesses from './PreviousGuesses';
 import CurrentGuess from './CurrentGuess';
@@ -8,17 +8,13 @@ import '../css/PlayArea.css';
 //manages currentGuess state
 //updates previousGuess state upon currentGuess submit
 //parent component of PreviousGuesses, CurrentGuesses, and Keyboard
-const PlayArea = (props) => {
+const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWordLength}) => {
   const [currentGuess, setCurrentGuess] = useState('');
-
-  const previousGuesses = props.previousGuesses;
-  const setPreviousGuesses = props.setPreviousGuesses;
-  const foundAnswers = props.foundAnswers;
 
   //wordNum: index of the current word being guessed
   //wordLength: the length of the current word being guessed
   const wordNum = foundAnswers.length;
-  const wordLength = wordNum + props.startingWordLength;
+  const wordLength = wordNum + startingWordLength;
 
   //ref to automatically scroll when guesses fill PlayArea
   const bottomOfPlayAreaRef = useRef(null);

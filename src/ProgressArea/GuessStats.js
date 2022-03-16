@@ -1,8 +1,5 @@
 //Render remaining and total guesses
-const GuessStats = (props) => {
-  const maxGuesses = props.maxGuesses;
-  const numGuesses = props.numGuesses;
-
+const GuessStats = ({maxGuesses, numGuesses}) => {
   const className = (maxGuesses - numGuesses < 4) ? 'low-guesses' : '';
 
   return (

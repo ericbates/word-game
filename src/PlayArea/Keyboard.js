@@ -1,4 +1,4 @@
-import { statuses } from '../utils';
+import {statuses} from '../utils';
 import '../css/Keyboard.css';
 
 const keys = [
@@ -8,13 +8,7 @@ const keys = [
 ];
 
 //displays the interactive keyboard
-const Keyboard = (props) => {
-  const typeLetter = props.typeLetter;
-  const deleteLetter = props.deleteLetter;
-  const submitGuess = props.submitGuess;
-  const previousGuesses = props.previousGuesses;
-  const wordNum = props.wordNum;
-
+const Keyboard = ({typeLetter, deleteLetter, submitGuess, previousGuesses, wordNum}) => {
   const keyStatuses = {};
   //only interested in previousGuesses for the current word being guessed
   const currentWordPreviousGuesses = previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
