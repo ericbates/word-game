@@ -2,6 +2,7 @@ import {useState, useEffect, useCallback, useRef} from 'react';
 import Keyboard from './Keyboard';
 import PreviousGuesses from './PreviousGuesses';
 import CurrentGuess from './CurrentGuess';
+import Results from './Results';
 import '../css/PlayArea.css';
 
 //The main interactive area of the app
@@ -110,18 +111,26 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
 
   //when previousGuesses changes, scroll to the bottom of the play-area
   useEffect(() => {
-    bottomOfPlayAreaRef.current.scrollIntoView();
-    //scrollIntoView({ behavior: 'smooth' }) appears to be broken in Chrome
-    //produces inconsistent results, removed for now
-  }, [previousGuesses]);
+    if(!endOfGame) {
+      bottomOfPlayAreaRef.current.scrollIntoView();
+      //scrollIntoView({ behavior: 'smooth' }) appears to be broken in Chrome
+      //produces inconsistent results, removed for now
+    }
+  }, [previousGuesses, endOfGame]);
 
   return (
     <>
       <section id='play-area'>
         <div id='play-area-overflow-scroll'>
-          <PreviousGuesses previousGuesses={previousGuesses} wordNum={wordNum} />
-          <CurrentGuess currentGuess={currentGuess} wordLength={wordLength} wordNum={wordNum}/>
-          <div ref={bottomOfPlayAreaRef} />
+          { /* display Results when endOfGame is true, otherwise display PreviousGuesses and CurrentGuess */
+            endOfGame
+            ? <Results />
+            : <>
+                <PreviousGuesses previousGuesses={previousGuesses} wordNum={wordNum} />
+                <CurrentGuess currentGuess={currentGuess} wordLength={wordLength} wordNum={wordNum}/>
+                <div ref={bottomOfPlayAreaRef} />
+              </>
+          }
         </div>
       </section>
       <Keyboard

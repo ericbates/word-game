@@ -10,13 +10,16 @@ const keys = [
 //displays the interactive keyboard
 const Keyboard = ({typeLetter, deleteLetter, submitGuess, previousGuesses, wordNum, endOfGame}) => {
   const keyStatuses = {};
-  //only interested in previousGuesses for the current word being guessed
-  const currentWordPreviousGuesses = previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
-  currentWordPreviousGuesses.forEach(previousGuess => {
-    [...previousGuess.guess].forEach((letter, index) => {
-      keyStatuses[letter] = statuses[previousGuess.status[index]];
+
+  if(!endOfGame) {
+    //only interested in previousGuesses for the current word being guessed
+    const currentWordPreviousGuesses = previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
+    currentWordPreviousGuesses.forEach(previousGuess => {
+      [...previousGuess.guess].forEach((letter, index) => {
+        keyStatuses[letter] = statuses[previousGuess.status[index]];
+      });
     });
-  });
+  }
  
   const rows = keys.map((keyRow, rowIndex) => {
     return (
