@@ -46,6 +46,8 @@ const WordGame = () => {
             foundAnswers={foundAnswers}
             startingWordLength={startingWordLength}
             endOfGame={endOfGame}
+            maxGuesses={maxGuesses}
+            totalWords={totalWords}
           />
       </main>
     </div>

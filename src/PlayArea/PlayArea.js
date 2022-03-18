@@ -9,7 +9,7 @@ import '../css/PlayArea.css';
 //manages currentGuess state
 //updates previousGuess state upon currentGuess submit
 //parent component of PreviousGuesses, CurrentGuesses, and Keyboard
-const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWordLength, endOfGame}) => {
+const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWordLength, endOfGame, maxGuesses, totalWords}) => {
   const [currentGuess, setCurrentGuess] = useState('');
 
   //wordNum: index of the current word being guessed
@@ -124,7 +124,7 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
         <div id='play-area-overflow-scroll'>
           { /* display Results when endOfGame is true, otherwise display PreviousGuesses and CurrentGuess */
             endOfGame
-            ? <Results />
+            ? <Results previousGuesses={previousGuesses} foundAnswers={foundAnswers} maxGuesses={maxGuesses} totalWords={totalWords} />
             : <>
                 <PreviousGuesses previousGuesses={previousGuesses} wordNum={wordNum} />
                 <CurrentGuess currentGuess={currentGuess} wordLength={wordLength} wordNum={wordNum}/>
