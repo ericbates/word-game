@@ -23,7 +23,7 @@ const ProgressArea = ({previousGuesses, foundAnswers, maxGuesses, totalWords, ti
   
   return (
     <section id='progress-area'>
-      <GuessStats numGuesses={numGuesses} maxGuesses={maxGuesses} />
+      <GuessStats maxGuesses={maxGuesses} numGuesses={numGuesses} />
       <FoundAnswers foundAnswers={foundAnswers} />
       { /* display Instructions when no guesses, replace Instructions with ProgressIcons after first guess */
         numGuesses > 0

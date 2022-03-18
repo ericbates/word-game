@@ -25,6 +25,8 @@ const WordGame = () => {
 
   const foundAnswers = previousGuesses.filter(previousGuess => previousGuess.correct);
 
+  const endOfGame = (previousGuesses.length === maxGuesses || foundAnswers.length === totalWords) ? true : false;
+
   return (
     <div className='word-game-app'>
       <header>
@@ -43,6 +45,7 @@ const WordGame = () => {
             setPreviousGuesses={setPreviousGuesses}
             foundAnswers={foundAnswers}
             startingWordLength={startingWordLength}
+            endOfGame={endOfGame}
           />
       </main>
     </div>

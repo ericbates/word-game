@@ -8,7 +8,7 @@ import '../css/PlayArea.css';
 //manages currentGuess state
 //updates previousGuess state upon currentGuess submit
 //parent component of PreviousGuesses, CurrentGuesses, and Keyboard
-const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWordLength}) => {
+const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWordLength, endOfGame}) => {
   const [currentGuess, setCurrentGuess] = useState('');
 
   //wordNum: index of the current word being guessed
@@ -100,11 +100,13 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
       }
     }
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+    if(!endOfGame) {
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+      }
     }
-  }, [typeLetter, deleteLetter, submitGuess, foundAnswer]);
+  }, [typeLetter, deleteLetter, submitGuess, foundAnswer, endOfGame]);
 
   //when previousGuesses changes, scroll to the bottom of the play-area
   useEffect(() => {
@@ -128,6 +130,7 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
         submitGuess={submitGuess}
         previousGuesses={previousGuesses}
         wordNum={wordNum}
+        endOfGame={endOfGame}
       />
     </>
   );

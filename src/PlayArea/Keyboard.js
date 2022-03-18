@@ -8,7 +8,7 @@ const keys = [
 ];
 
 //displays the interactive keyboard
-const Keyboard = ({typeLetter, deleteLetter, submitGuess, previousGuesses, wordNum}) => {
+const Keyboard = ({typeLetter, deleteLetter, submitGuess, previousGuesses, wordNum, endOfGame}) => {
   const keyStatuses = {};
   //only interested in previousGuesses for the current word being guessed
   const currentWordPreviousGuesses = previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
@@ -24,14 +24,17 @@ const Keyboard = ({typeLetter, deleteLetter, submitGuess, previousGuesses, wordN
       <div className='keyboard-row' key={`keyboard-row-${rowIndex}`}>
         {keyRow.map((key, keyIndex) => {
           //set onClick function for each key
-          let onClick = (event) => {
-            const letter = event.currentTarget.id;
-            typeLetter(letter);
-          }
-          if(key === 'enter') {
-            onClick = submitGuess;
-          } else if(key === 'del') {
-            onClick = deleteLetter;
+          let onClick = () => {};
+          if(!endOfGame) {
+            onClick = (event) => {
+              const letter = event.currentTarget.id;
+              typeLetter(letter);
+            }
+            if(key === 'enter') {
+              onClick = submitGuess;
+            } else if(key === 'del') {
+              onClick = deleteLetter;
+            }
           }
 
           let className = 'keyboard-key';
