@@ -1,11 +1,10 @@
 //Render remaining and total guesses
-const GuessStats = (props) => {
-  const numGuesses = props.numGuesses;
-  const totalGuesses = props.totalGuesses;
+const GuessStats = ({maxGuesses, numGuesses}) => {
+  const className = (maxGuesses - numGuesses < 4) ? 'low-guesses' : '';
 
   return (
-    <div id="guess-stats">
-        <h1><span id="num-guesses">{numGuesses}</span>/{totalGuesses}</h1>
+    <div id='guess-stats'>
+        <h1><span id='num-guesses' className={className}>{numGuesses}</span>/{maxGuesses}</h1>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap');
 
+
 body {
   margin: 0;
   padding: 0;
@@ -16,6 +17,10 @@ html, body, #root, .word-game-app {
 
 h1, h2, h3, h4 {
   margin: 0;
+}
+
+p {
+  font-size: 1.25vh;
 }
 
 header {
@@ -41,30 +46,27 @@ main {
   max-width: 1200px;
   margin: 0px auto 0 auto;
   height: 100%;
-  padding-top: 90px;
+  padding: 90px 2% 0px 2%;
   box-sizing: border-box;
-  display: flex;
-  flex-flow: column;
-}
-
-#progress-play-container {
-  display: flex;
-  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "progress play"
+                       "keyboard keyboard";
 }
 
 #progress-area {
-  width: 30%;
+  grid-area: progress;
   border-right: 1px solid rgb(201, 201, 201);
   box-sizing: border-box;
-  position: relative;
 }
 
 #play-area {
-  width: 70%;
+  grid-area: play;
   position: relative;
 }
 
-#progress-area-overflow-scroll, #play-area-overflow-scroll{
+#play-area-overflow-scroll{
   position: absolute;
   left: 0;
   right: 0;
@@ -74,11 +76,10 @@ main {
 }
 
 #keyboard-area {
-  width: 100%;
+  grid-area: keyboard;
   margin-top: 20px;
   padding: 20px 10px;
   border-top: 1px solid rgb(201, 201, 201);
-  flex: 0 1 auto;
   box-sizing: border-box;
 }
 

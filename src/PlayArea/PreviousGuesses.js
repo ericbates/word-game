@@ -1,30 +1,25 @@
-//possible Row child component statuses
-const statuses = ['absent', 'misplaced', 'correct'];
+import React from 'react';
 
 //Renders all previous guesses for the current word
 //Each letter will have a status
-//3 possible statuses:
-//    absent (gray)
-//    misplaced (yellow)
-//    correct (green)
-const PreviousGuesses = (props) => {
-  const guesses = props.guesses;
+const PreviousGuesses = ({previousGuesses, wordNum}) => {
+  //only interested in previousGuesses for the current word being guessed
+  const currentWordPreviousGuesses = previousGuesses.filter(guessObject => guessObject.wordNum === wordNum);
 
-  const rows = guesses.map((guess, guessIndex) => {
-    const wordArr = [...guess];
-    const wordLength = wordArr.length;
+  const rows = currentWordPreviousGuesses.map((guessObject, guessIndex) => {
+    const guessArr = [...guessObject.guess];
+    const guessLength = guessArr.length;
     return (
       //build a 'word-row' div for each word
-      <div className="word-row" key={`word_${wordLength}-${guessIndex}`}>
-        {wordArr.map((letter, letterIndex) => {
-          //TEMPORARY for styling purposes
-          const status = statuses[Math.floor(Math.random() * 3)];
+      <div className={`word-row w${wordNum}`} key={`word_${guessLength}-${guessIndex}`}>
+        {guessArr.map((letter, letterIndex) => {
+          const status = guessObject.status[letterIndex];
 
           return (
             //build a 'letter' div for each letter in the word
             <div
               className={`letter ${status}`}
-              key={`letter_${wordLength}-${guessIndex},${letterIndex}`}
+              key={`letter_${guessLength}-${guessIndex},${letterIndex}`}
             >
               <h1>{letter.toUpperCase()}</h1>
             </div>
@@ -35,10 +30,10 @@ const PreviousGuesses = (props) => {
   });
   
   return (
-    <div id="previous-guesses">
+    <div id='previous-guesses'>
       {rows}
     </div>
   );
 }
 
-export default PreviousGuesses;
+export default React.memo(PreviousGuesses);

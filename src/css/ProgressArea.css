@@ -1,9 +1,9 @@
-#progress-area-overflow-scroll {
+#progress-area {
   display: inline-grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
   align-content: start;
-  gap: 10px;
-  margin-right: 10%;
+  padding-right: 8%;
   box-sizing: border-box;
 }
 
@@ -15,14 +15,11 @@
   border-bottom: 1px solid rgb(201, 201, 201);
   color: rgb(48, 48, 48);
   text-align: center;
+  margin-bottom: 10px;
 }
 
 #guess-stats h1 {
   font-size: 2em;
-}
-
-#num-guesses {
-  color: rgb(180, 0, 0);
 }
 
 
@@ -34,6 +31,7 @@
   flex-flow: wrap;
   border-bottom: 1px solid rgb(201, 201, 201);
   padding: 0px 10px 10px 10px;
+  margin-bottom: 10px;
 }
 
 #found-answers h2 {
@@ -46,11 +44,21 @@
 /* ProgressIcons */
 
 #progress-icons {
+  position: relative;
+}
+
+#progress-icons-overflow-scroll {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
   display: inline-grid;
   grid-template-columns: 1fr;
   align-content: start;
   gap: 4px;
-  padding: 0px 10px;
+  padding: 0px 10px 10px 10px;
   width: 100%;
   box-sizing: border-box;
 }

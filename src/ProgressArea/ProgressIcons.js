@@ -1,22 +1,15 @@
 //Render multiple rows of ProgressIcons
-//currentProgress is a 2D array representing rows of statuses
-//3 possible statuses:
-//    absent (gray)
-//    misplaced (yellow)
-//    correct (green)
-const ProgressIcons = (props) => {
-  const currentProgress = props.currentProgress;
-
-  const rows = currentProgress.map((row, rowIndex) => {
+const ProgressIcons = ({previousGuesses, bottomOfProgressIconsRef}) => {
+  const rows = previousGuesses.map((guess, guessIndex) => {
     return (
-      //build a 'progress-row' div for each row
-      <div className="progress-row" key={`progress-row-${rowIndex}`}>
-        {row.map((iconStatus, iconIndex) => {
+      //build a 'progress-row' div for each guess
+      <div className='progress-row' key={`progress-row-${guessIndex}`}>
+        {guess.status.map((iconStatus, iconIndex) => {
           return (
             //build a 'progress-icon' div for each progressIcon in the row
             <div
               className={`progress-icon ${iconStatus}`}
-              key={`progress-icon-${rowIndex},${iconIndex}`}
+              key={`progress-icon-${guessIndex},${iconIndex}`}
             />
           );
         })}
@@ -25,8 +18,11 @@ const ProgressIcons = (props) => {
   });
 
   return (
-    <div id="progress-icons">
-      {rows}
+    <div id='progress-icons'>
+      <div id='progress-icons-overflow-scroll'>
+        {rows}
+        <div ref={bottomOfProgressIconsRef} />
+      </div>
     </div>
   );
 } 

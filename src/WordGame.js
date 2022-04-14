@@ -1,30 +1,52 @@
+import {useState} from 'react';
 import ProgressArea from './ProgressArea/ProgressArea';
 import PlayArea from './PlayArea/PlayArea';
-import KeyboardArea from './KeyboardArea/KeyboardArea';
-import "./css/WordGame.css";
-import './css/StatusColors.css';
+import './css/WordGame.css';
+import './css/colors.css';
+
+const title = 'Word Game';
+const maxGuesses = 20;
+const totalWords = 6;
+const startingWordLength = 3;
 
 const WordGame = () => {
-  //TEMPORARY DUMMY DATA 
-  const totalGuesses = 20;
-  let numGuesses = 10;
-  const foundAnswers = ['two', 'tear', 'index', 'apples', 'jukebox', 'aaaaaaaa'];
+  //an array of previousGuess objects
+  //{ 
+  //  guess: string representation of the guess
+  //  status: an array representing the status of each letter of the guess
+  //          status array contains strings of values: 
+  //          'absent' (grey), 'misplaced' (yellow), or 'correct' (green)
+  //  wordNum: an integer representing the index of the word being guessed
+  //  correct: a boolean representing if the current word is the word being guessed
+  //}
+  const [previousGuesses, setPreviousGuesses] = useState([]);
+
+  const foundAnswers = previousGuesses.filter(previousGuess => previousGuess.correct);
+
+  const endOfGame = (previousGuesses.length === maxGuesses || foundAnswers.length === totalWords);
 
   return (
-    <div className="word-game-app">
+    <div className='word-game-app'>
       <header>
-        <h1>Word Game</h1>
+        <h1>{title}</h1>
       </header>
       <main>
-        <div id="progress-play-container">
           <ProgressArea
+            previousGuesses={previousGuesses}
+            maxGuesses={maxGuesses}
+            totalWords={totalWords}
             foundAnswers={foundAnswers}
-            numGuesses={numGuesses}
-            totalGuesses={totalGuesses}
+            title={title}
           />
-          <PlayArea />
-        </div>
-        <KeyboardArea />
+          <PlayArea
+            previousGuesses={previousGuesses}
+            setPreviousGuesses={setPreviousGuesses}
+            foundAnswers={foundAnswers}
+            startingWordLength={startingWordLength}
+            endOfGame={endOfGame}
+            maxGuesses={maxGuesses}
+            totalWords={totalWords}
+          />
       </main>
     </div>
   );
