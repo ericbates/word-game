@@ -29,27 +29,27 @@
 }
 
 /* letter box size dependent upon which word is being guessed */
-.word-row.first {
+.word-row.w0 {
   grid-auto-columns: 11%;
 }
 
-.word-row.second {
+.word-row.w1 {
   grid-auto-columns: 11%;
 }
 
-.word-row.third {
+.word-row.w2 {
   grid-auto-columns: 11%;
 }
 
-.word-row.fourth {
+.word-row.w3 {
   grid-auto-columns: 10%;
 }
 
-.word-row.fifth {
+.word-row.w4 {
   grid-auto-columns: 10%;
 }
 
-.word-row.sixth {
+.word-row.w5 {
   grid-auto-columns: 9%;
 }
 
@@ -96,27 +96,27 @@
     gap: 4px;
   }
 
-  .word-row.first {
+  .word-row.w0 {
     grid-auto-columns: 20%;
   }
   
-  .word-row.second {
+  .word-row.w1 {
     grid-auto-columns: 18%;
   }
   
-  .word-row.third {
+  .word-row.w2 {
     grid-auto-columns: 15%;
   }
   
-  .word-row.fourth {
+  .word-row.w3 {
     grid-auto-columns: 13%;
   }
   
-  .word-row.fifth {
+  .word-row.w4 {
     grid-auto-columns: 11%;
   }
   
-  .word-row.sixth {
+  .word-row.w5 {
     grid-auto-columns: 10%;
   }
 
@@ -165,27 +165,27 @@
 /* Mobile Landscape */
 
 @media only screen and (max-height: 600px) and (orientation: landscape) {
-  .word-row.first {
+  .word-row.w0 {
     grid-auto-columns: 5%;
   }
   
-  .word-row.second {
+  .word-row.w1 {
     grid-auto-columns: 5%;
   }
   
-  .word-row.third {
+  .word-row.w2 {
     grid-auto-columns: 5%;
   }
   
-  .word-row.fourth {
+  .word-row.w3 {
     grid-auto-columns: 5%;
   }
   
-  .word-row.fifth {
+  .word-row.w4 {
     grid-auto-columns: 4%;
   }
   
-  .word-row.sixth {
+  .word-row.w5 {
     grid-auto-columns: 3%;
   }
 

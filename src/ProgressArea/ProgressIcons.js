@@ -1,5 +1,3 @@
-import {statuses} from '../utils';
-
 //Render multiple rows of ProgressIcons
 const ProgressIcons = ({previousGuesses, bottomOfProgressIconsRef}) => {
   const rows = previousGuesses.map((guess, guessIndex) => {
@@ -10,7 +8,7 @@ const ProgressIcons = ({previousGuesses, bottomOfProgressIconsRef}) => {
           return (
             //build a 'progress-icon' div for each progressIcon in the row
             <div
-              className={`progress-icon ${statuses[iconStatus]}`}
+              className={`progress-icon ${iconStatus}`}
               key={`progress-icon-${guessIndex},${iconIndex}`}
             />
           );

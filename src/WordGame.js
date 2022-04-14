@@ -14,18 +14,16 @@ const WordGame = () => {
   //{ 
   //  guess: string representation of the guess
   //  status: an array representing the status of each letter of the guess
-  //  wordNum: an integer respresenting the index of the word being guessed
+  //          status array contains strings of values: 
+  //          'absent' (grey), 'misplaced' (yellow), or 'correct' (green)
+  //  wordNum: an integer representing the index of the word being guessed
   //  correct: a boolean representing if the current word is the word being guessed
   //}
-  //status array can be an int of values 0, 1, or 2
-  //  0 = absent (grey)
-  //  1 = misplaced (yellow)
-  //  2 = correct (green)
   const [previousGuesses, setPreviousGuesses] = useState([]);
 
   const foundAnswers = previousGuesses.filter(previousGuess => previousGuess.correct);
 
-  const endOfGame = (previousGuesses.length === maxGuesses || foundAnswers.length === totalWords) ? true : false;
+  const endOfGame = (previousGuesses.length === maxGuesses || foundAnswers.length === totalWords);
 
   return (
     <div className='word-game-app'>

@@ -26,8 +26,21 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
     const status = [];
     let correct = true;
     [...guess].forEach((letter, index) => {
-      status[index] = Math.floor(Math.random() * 3);
-      if(status[index] !== 2) {
+      const statusInt = Math.floor(Math.random() * 3);
+      switch(statusInt) {
+        case 0:
+          status[index] = 'absent';
+          break;
+        case 1:
+          status[index] = 'misplaced';
+          break;
+        case 2:
+          status[index] = 'correct';
+          break;
+        default:
+          break;
+      }
+      if(statusInt !== 2) {
         correct = false;
       }
     });
@@ -45,7 +58,7 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
     if(currentGuess.length === wordLength) {
       const status = [];
       for(let i = 0; i < wordLength; i++) {
-        status[i] = 2;
+        status[i] = 'correct';
       }
       const previousGuess = {
         guess: currentGuess,

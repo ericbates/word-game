@@ -1,9 +1,5 @@
-import {assignWordRowClassName} from '../utils';
-
 //Renders the active input row
 const CurrentGuess = ({currentGuess, wordLength, wordNum}) => {
-  const wordRowClassName = assignWordRowClassName(wordNum);
-
   const letters = [];
   for(let i = 0; i < wordLength; i++) {
     if(i < currentGuess.length) {
@@ -21,7 +17,7 @@ const CurrentGuess = ({currentGuess, wordLength, wordNum}) => {
 
   return (
     <div id='current-guess'>
-      <div className={wordRowClassName}>
+      <div className={`word-row w${wordNum}`}>
         {letters}
       </div>
     </div>

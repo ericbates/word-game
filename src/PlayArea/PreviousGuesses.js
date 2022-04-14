@@ -1,11 +1,8 @@
 import React from 'react';
-import {statuses, assignWordRowClassName} from '../utils';
 
 //Renders all previous guesses for the current word
 //Each letter will have a status
 const PreviousGuesses = ({previousGuesses, wordNum}) => {
-  const wordRowClassName = assignWordRowClassName(wordNum);
-
   //only interested in previousGuesses for the current word being guessed
   const currentWordPreviousGuesses = previousGuesses.filter(guessObject => guessObject.wordNum === wordNum);
 
@@ -14,9 +11,9 @@ const PreviousGuesses = ({previousGuesses, wordNum}) => {
     const guessLength = guessArr.length;
     return (
       //build a 'word-row' div for each word
-      <div className={wordRowClassName} key={`word_${guessLength}-${guessIndex}`}>
+      <div className={`word-row w${wordNum}`} key={`word_${guessLength}-${guessIndex}`}>
         {guessArr.map((letter, letterIndex) => {
-          const status = statuses[guessObject.status[letterIndex]];
+          const status = guessObject.status[letterIndex];
 
           return (
             //build a 'letter' div for each letter in the word

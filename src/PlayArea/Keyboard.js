@@ -1,4 +1,3 @@
-import {statuses} from '../utils';
 import '../css/Keyboard.css';
 
 const keys = [
@@ -16,7 +15,7 @@ const Keyboard = ({typeLetter, deleteLetter, submitGuess, previousGuesses, wordN
     const currentWordPreviousGuesses = previousGuesses.filter(previousGuess => previousGuess.wordNum === wordNum);
     currentWordPreviousGuesses.forEach(previousGuess => {
       [...previousGuess.guess].forEach((letter, index) => {
-        keyStatuses[letter] = statuses[previousGuess.status[index]];
+        keyStatuses[letter] = previousGuess.status[index];
       });
     });
   }
