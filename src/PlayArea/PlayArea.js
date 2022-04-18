@@ -20,6 +20,15 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
   //ref to automatically scroll when guesses fill PlayArea
   const bottomOfPlayAreaRef = useRef(null);
 
+  const testAPI = async () => {
+    try {
+      const response = await fetch("http://localhost:9000/validate");
+      const responseText = await response.text();
+      alert(responseText);
+    } catch(e) {
+      console.error(e);
+    }
+  }
 
   //TEMPORARY DUMMY FUNCTION to fake validation
   const validateGuess = useCallback((guess) => {
@@ -92,6 +101,7 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
   //submits the current guess to be added to the previousGuesses state
   const submitGuess = useCallback(() => {
     if(currentGuess.length === wordLength) {
+      testAPI();
       setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, validateGuess(currentGuess)]);
       setCurrentGuess('');
     }
