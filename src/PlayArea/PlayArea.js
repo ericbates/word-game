@@ -20,65 +20,35 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
   //ref to automatically scroll when guesses fill PlayArea
   const bottomOfPlayAreaRef = useRef(null);
 
-  const testAPI = async () => {
+  const testAPI = useCallback(async (guess) => {
     try {
-      const response = await fetch("http://localhost:9000/validate");
-      const responseText = await response.text();
-      alert(responseText);
+      const response = await fetch(`http://localhost:9000/validate/${wordNum}/${guess}`);
+      const guessObject = await response.json();
+      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guessObject]);
+      setCurrentGuess('');
     } catch(e) {
       console.error(e);
     }
-  }
+  }, [wordNum, setPreviousGuesses]);
 
-  //TEMPORARY DUMMY FUNCTION to fake validation
-  const validateGuess = useCallback((guess) => {
-    const status = [];
-    let correct = true;
-    [...guess].forEach((letter, index) => {
-      const statusInt = Math.floor(Math.random() * 3);
-      switch(statusInt) {
-        case 0:
-          status[index] = 'absent';
-          break;
-        case 1:
-          status[index] = 'misplaced';
-          break;
-        case 2:
-          status[index] = 'correct';
-          break;
-        default:
-          break;
-      }
-      if(statusInt !== 2) {
-        correct = false;
-      }
-    });
-    const guessObject = {
-      guess,
-      status,
-      wordNum,
-      correct
-    };
-    return guessObject;
-  }, [wordNum]);
+  const testAPICorrect = useCallback(async (guess) => {
+    try {
+      const response = await fetch(`http://localhost:9000/validate/correct/${wordNum}/${guess}/${wordLength}`);
+      const guessObject = await response.json();
+      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guessObject]);
+      setCurrentGuess('');
+    } catch(e) {
+      console.error(e);
+    }
+  }, [wordNum, wordLength, setPreviousGuesses]);
+  
 
   //TEMPORARY DUMMY FUNCTION used to fake a correct guess
   const foundAnswer = useCallback(() => {
     if(currentGuess.length === wordLength) {
-      const status = [];
-      for(let i = 0; i < wordLength; i++) {
-        status[i] = 'correct';
-      }
-      const previousGuess = {
-        guess: currentGuess,
-        status: status,
-        wordNum: wordNum,
-        correct: true
-      };
-      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, previousGuess]);
-      setCurrentGuess('');
+      testAPICorrect(currentGuess);
     }
-  }, [currentGuess, wordLength, setPreviousGuesses, wordNum]);
+  }, [currentGuess, wordLength, testAPICorrect]);
 
   //recieves a single character and adds it to the current guess
   const typeLetter = useCallback((letter) => {
@@ -101,11 +71,9 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
   //submits the current guess to be added to the previousGuesses state
   const submitGuess = useCallback(() => {
     if(currentGuess.length === wordLength) {
-      testAPI();
-      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, validateGuess(currentGuess)]);
-      setCurrentGuess('');
+      testAPI(currentGuess);
     }
-  }, [currentGuess, wordLength, setPreviousGuesses, validateGuess]);
+  }, [currentGuess, wordLength, testAPI]);
 
 
   //listen for keystrokes
