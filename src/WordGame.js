@@ -3,7 +3,11 @@ import ProgressArea from './ProgressArea/ProgressArea';
 import PlayArea from './PlayArea/PlayArea';
 import './css/WordGame.css';
 import './css/colors.css';
-import {title, maxGuesses, totalWords, startingWordLength} from './globalParams';
+
+const title = 'Word Game';
+const maxGuesses = 20;
+const totalWords = 6;
+const startingWordLength = 3;
 
 const WordGame = () => {
   //an array of previousGuess objects

@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const sqlite3 = require('sqlite3');
-import {startingWordLength}  from '../../globalParams';
+
+const startingWordLength = 3;
 
 const db = new sqlite3.Database('./database/words.db', sqlite3.OPEN_READWRITE, (err) => {
   if(err) {
@@ -13,6 +14,10 @@ const db = new sqlite3.Database('./database/words.db', sqlite3.OPEN_READWRITE, (
 
 router.get('/:guess', (req, res, next) => {
   const guess = req.params.guess;
+  const wordLength = guess.length;
+  const wordNum = wordLength - startingWordLength;
+
+  console.log(`${guess}, ${wordLength}, ${wordNum}`);
 
   /*
   const status = [];
