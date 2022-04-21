@@ -33,18 +33,16 @@ const validWord = async (word) => {
 const generateResponse = (guess, wordNum) => {
   const wordToGuess = todaysWords[wordNum];
   const status = [];
-  let correct = true;
   [...guess].forEach((letter, index) => {
       if(letter === wordToGuess[index]) {
         status[index] = 'correct';
       } else if(wordToGuess.includes(letter)) {
         status[index] = 'misplaced';
-        correct = false;
       } else {
         status[index] = 'absent';
-        correct = false;
       }
   });
+  const correct = status.every(status => {return status === 'correct'});
   return {
     guess,
     status,
@@ -55,7 +53,7 @@ const generateResponse = (guess, wordNum) => {
 
 router.get('/:guess/:wordNum', async (req, res, next) => {
   const guess = req.params.guess;
-  const wordNum = req.params.wordNum;
+  const wordNum = parseInt(req.params.wordNum);
   
   const valid = await validWord(guess);
 
