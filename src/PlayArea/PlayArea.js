@@ -22,14 +22,14 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
 
   const testAPI = useCallback(async (guess) => {
     try {
-      const response = await fetch(`http://localhost:9000/validate/${guess}`);
+      const response = await fetch(`http://localhost:9000/validate/${guess}/${wordNum}`);
       const guessObject = await response.json();
       setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guessObject]);
       setCurrentGuess('');
     } catch(e) {
       console.error(e);
     }
-  }, [setPreviousGuesses]);
+  }, [wordNum, setPreviousGuesses]);
 
   const testAPICorrect = useCallback(async (guess) => {
     try {

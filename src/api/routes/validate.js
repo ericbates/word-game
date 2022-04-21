@@ -3,8 +3,6 @@ var util = require('util');
 var router = express.Router();
 const sqlite3 = require('sqlite3');
 
-const startingWordLength = 3;
-
 //TEMPORARY VARIABLE FOR TESTING
 const todaysWords = ['was', 'four', 'index', 'prison', 'behoove', 'blizzard']
 
@@ -55,9 +53,9 @@ const generateResponse = (guess, wordNum) => {
   };
 }
 
-router.get('/:guess', async (req, res, next) => {
+router.get('/:guess/:wordNum', async (req, res, next) => {
   const guess = req.params.guess;
-  const wordNum = guess.length - startingWordLength;
+  const wordNum = req.params.wordNum;
   
   const valid = await validWord(guess);
 
