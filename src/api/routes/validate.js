@@ -1,5 +1,14 @@
 var express = require('express');
 var router = express.Router();
+const sqlite3 = require('sqlite3');
+
+const db = new sqlite3.Database('./database/words.db', sqlite3.OPEN_READWRITE, (err) => {
+  if(err) {
+    return console.error(err.message);
+  }
+
+  console.log('DB connection successful');
+});
 
 router.get('/:wordNum/:guess', (req, res, next) => {
   const status = [];

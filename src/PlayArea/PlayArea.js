@@ -41,7 +41,7 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
       console.error(e);
     }
   }, [wordNum, wordLength, setPreviousGuesses]);
-  
+
 
   //TEMPORARY DUMMY FUNCTION used to fake a correct guess
   const foundAnswer = useCallback(() => {
