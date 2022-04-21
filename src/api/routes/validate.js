@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const sqlite3 = require('sqlite3');
+import {startingWordLength}  from '../../globalParams';
 
 const db = new sqlite3.Database('./database/words.db', sqlite3.OPEN_READWRITE, (err) => {
   if(err) {
@@ -10,7 +11,10 @@ const db = new sqlite3.Database('./database/words.db', sqlite3.OPEN_READWRITE, (
   console.log('DB connection successful');
 });
 
-router.get('/:wordNum/:guess', (req, res, next) => {
+router.get('/:guess', (req, res, next) => {
+  const guess = req.params.guess;
+
+  /*
   const status = [];
   const guess = req.params.guess;
   const wordNum = parseInt(req.params.wordNum);
@@ -41,6 +45,7 @@ router.get('/:wordNum/:guess', (req, res, next) => {
     correct
   };
   res.send(JSON.stringify(guessObject));
+  */
 });
 
 router.get('/correct/:wordNum/:guess/:wordLength', (req, res, next) => {
