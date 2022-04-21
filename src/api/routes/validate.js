@@ -1,56 +1,72 @@
 var express = require('express');
+var util = require('util');
 var router = express.Router();
 const sqlite3 = require('sqlite3');
 
 const startingWordLength = 3;
 
+//TEMPORARY VARIABLE FOR TESTING
+const todaysWords = ['was', 'four', 'index', 'prison', 'behoove', 'blizzard']
+
 const db = new sqlite3.Database('./database/words.db', sqlite3.OPEN_READWRITE, (err) => {
   if(err) {
     return console.error(err.message);
   }
-
   console.log('DB connection successful');
 });
 
-router.get('/:guess', (req, res, next) => {
-  const guess = req.params.guess;
-  const wordLength = guess.length;
-  const wordNum = wordLength - startingWordLength;
+//promisify db.all
+const dbQueryAllRows = util.promisify(db.all.bind(db));
 
-  console.log(`${guess}, ${wordLength}, ${wordNum}`);
+//function for validating if a submitted word exists in the word list
+//returns true if valid, else false
+const validWord = async (word) => {
+  try {
+    const sql = `SELECT * FROM words_${word.length} WHERE word=?`;
+    const rows = await dbQueryAllRows(sql, [word]);
+    return rows.length > 0;
+  } catch(e) {
+    console.error(e);
+  }
+}
 
-  /*
+//builds responseObject to be sent back to front end
+//compares each letter of guess against current word being guessed
+const generateResponse = (guess, wordNum) => {
+  const wordToGuess = todaysWords[wordNum];
   const status = [];
-  const guess = req.params.guess;
-  const wordNum = parseInt(req.params.wordNum);
   let correct = true;
   [...guess].forEach((letter, index) => {
-    const statusInt = Math.floor(Math.random() * 3);
-    switch(statusInt) {
-      case 0:
-        status[index] = 'absent';
-        break;
-      case 1:
-        status[index] = 'misplaced';
-        break;
-      case 2:
+      if(letter === wordToGuess[index]) {
         status[index] = 'correct';
-        break;
-      default:
-        break;
-    }
-    if(statusInt !== 2) {
-      correct = false;
-    }
+      } else if(wordToGuess.includes(letter)) {
+        status[index] = 'misplaced';
+        correct = false;
+      } else {
+        status[index] = 'absent';
+        correct = false;
+      }
   });
-  const guessObject = {
+  return {
     guess,
     status,
     wordNum,
     correct
   };
-  res.send(JSON.stringify(guessObject));
-  */
+}
+
+router.get('/:guess', async (req, res, next) => {
+  const guess = req.params.guess;
+  const wordNum = guess.length - startingWordLength;
+  
+  const valid = await validWord(guess);
+
+  if(valid) {
+    const guessObject = generateResponse(guess, wordNum);
+    res.status(200).send(JSON.stringify(guessObject));
+  } else {
+
+  }
 });
 
 router.get('/correct/:wordNum/:guess/:wordLength', (req, res, next) => {
