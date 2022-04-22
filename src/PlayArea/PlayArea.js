@@ -20,36 +20,6 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
   //ref to automatically scroll when guesses fill PlayArea
   const bottomOfPlayAreaRef = useRef(null);
 
-  const testAPI = useCallback(async (guess) => {
-    try {
-      const response = await fetch(`http://localhost:9000/validate/${guess}/${wordNum}`);
-      const guessObject = await response.json();
-      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guessObject]);
-      setCurrentGuess('');
-    } catch(e) {
-      console.error(e);
-    }
-  }, [wordNum, setPreviousGuesses]);
-
-  const testAPICorrect = useCallback(async (guess) => {
-    try {
-      const response = await fetch(`http://localhost:9000/validate/correct/${wordNum}/${guess}/${wordLength}`);
-      const guessObject = await response.json();
-      setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guessObject]);
-      setCurrentGuess('');
-    } catch(e) {
-      console.error(e);
-    }
-  }, [wordNum, wordLength, setPreviousGuesses]);
-
-
-  //TEMPORARY DUMMY FUNCTION used to fake a correct guess
-  const foundAnswer = useCallback(() => {
-    if(currentGuess.length === wordLength) {
-      testAPICorrect(currentGuess);
-    }
-  }, [currentGuess, wordLength, testAPICorrect]);
-
   //recieves a single character and adds it to the current guess
   const typeLetter = useCallback((letter) => {
     if(currentGuess.length < wordLength) {
@@ -68,12 +38,19 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
     }
   }, [currentGuess]);
 
-  //submits the current guess to be added to the previousGuesses state
-  const submitGuess = useCallback(() => {
+  //submits the current guess to the backend API for validation
+  const submitGuess = useCallback(async () => {
     if(currentGuess.length === wordLength) {
-      testAPI(currentGuess);
+      try {
+        const response = await fetch(`http://localhost:9000/validate/${currentGuess}/${wordNum}`);
+        const guessObject = await response.json();
+        setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guessObject]);
+        setCurrentGuess('');
+      } catch(e) {
+        console.error(e);
+      }
     }
-  }, [currentGuess, wordLength, testAPI]);
+  }, [currentGuess, wordNum, wordLength, setPreviousGuesses]);
 
 
   //listen for keystrokes
@@ -86,9 +63,6 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
         deleteLetter();
       } else if(event.key === 'Enter') {
         submitGuess();
-      } else if(event.key === 'Tab') {
-        //TEMPORARY, just need to fake a correct guess
-        foundAnswer();
       }
     }
 
@@ -98,7 +72,7 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
         window.removeEventListener('keydown', handleKeyDown);
       }
     }
-  }, [typeLetter, deleteLetter, submitGuess, foundAnswer, endOfGame]);
+  }, [typeLetter, deleteLetter, submitGuess, endOfGame]);
 
   //when previousGuesses changes, scroll to the bottom of the play-area
   useEffect(() => {

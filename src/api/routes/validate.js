@@ -43,14 +43,10 @@ const generateResponse = (guess, wordNum) => {
       }
   });
   const correct = status.every(status => {return status === 'correct'});
-  return {
-    guess,
-    status,
-    wordNum,
-    correct
-  };
+  return {guess, status, wordNum, correct};
 }
 
+//GET endpoint for validate API
 router.get('/:guess/:wordNum', async (req, res, next) => {
   const guess = req.params.guess;
   const wordNum = parseInt(req.params.wordNum);
@@ -58,28 +54,11 @@ router.get('/:guess/:wordNum', async (req, res, next) => {
   const valid = await validWord(guess);
 
   if(valid) {
-    const guessObject = generateResponse(guess, wordNum);
-    res.status(200).send(JSON.stringify(guessObject));
+    const responseObject = generateResponse(guess, wordNum);
+    res.status(200).send(JSON.stringify(responseObject));
   } else {
 
   }
-});
-
-router.get('/correct/:wordNum/:guess/:wordLength', (req, res, next) => {
-  const status = [];
-  const guess = req.params.guess;
-  const wordNum = parseInt(req.params.wordNum);
-  const wordLength = parseInt(req.params.wordLength);
-  for(let i = 0; i < wordLength; i++) {
-    status[i] = 'correct';
-  }
-  const previousGuess = {
-    guess: guess,
-    status: status,
-    wordNum: wordNum,
-    correct: true
-  };
-  res.send(JSON.stringify(previousGuess));
 });
 
 module.exports = router;
