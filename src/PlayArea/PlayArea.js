@@ -47,7 +47,7 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
         const guessObject = await response.json();
         if(Object.keys(guessObject).length === 0) {
           //if guessObject is empty
-          alert("Invalid word");
+          alert('Not found in word list');
         } else {
           setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guessObject]);
           setCurrentGuess('');
