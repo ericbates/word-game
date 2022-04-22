@@ -39,13 +39,19 @@ const PlayArea = ({previousGuesses, setPreviousGuesses, foundAnswers, startingWo
   }, [currentGuess]);
 
   //submits the current guess to the backend API for validation
+  //API returns a guessObject, an empty object indicates an invalid word
   const submitGuess = useCallback(async () => {
     if(currentGuess.length === wordLength) {
       try {
         const response = await fetch(`http://localhost:9000/validate/${currentGuess}/${wordNum}`);
         const guessObject = await response.json();
-        setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guessObject]);
-        setCurrentGuess('');
+        if(Object.keys(guessObject).length === 0) {
+          //if guessObject is empty
+          alert("Invalid word");
+        } else {
+          setPreviousGuesses(prevPreviousGuesses => [...prevPreviousGuesses, guessObject]);
+          setCurrentGuess('');
+        }
       } catch(e) {
         console.error(e);
       }

@@ -53,11 +53,13 @@ router.get('/:guess/:wordNum', async (req, res, next) => {
   
   const valid = await validWord(guess);
 
-  if(valid) {
-    const responseObject = generateResponse(guess, wordNum);
-    res.status(200).send(JSON.stringify(responseObject));
-  } else {
+  let responseObject = {};
 
+  if(valid) {
+    responseObject = generateResponse(guess, wordNum);
+    res.send(JSON.stringify(responseObject));
+  } else {
+    res.send(JSON.stringify(responseObject));
   }
 });
 
